@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Пользовательское соглашение DirectLine - маркетинговое IT-агентство">
+    <title>Пользовательское соглашение | DirectLine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FEF9E7',
+                            100: '#F9F1D8',
+                            200: '#F2E3B5',
+                            300: '#EEDC9A',
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                            600: '#AA8C2C',
+                            700: '#886F23',
+                            800: '#6B571B',
+                            900: '#4D3F14',
+                        },
+                        black: {
+                            950: '#020202',
+                            900: '#050505',
+                            850: '#080808',
+                            800: '#0A0A0A',
+                            750: '#0D0D0D',
+                            700: '#121212',
+                            650: '#1A1A1A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 4s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shine: {
+                            'to': { backgroundPosition: '200% center' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(to right, #D4AF37, #F9F1D8, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #D4AF37, #AA8C2C);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #F9F1D8, #D4AF37);
+        }
+
+        /* Fade In Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: #D4AF37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Legal Content Styling */
+        .legal-content {
+            line-height: 1.8;
+        }
+
+        .legal-content h1,
+        .legal-content h2,
+        .legal-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .legal-content h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #D4AF37;
+            margin-top: 2.5rem;
+        }
+
+        .legal-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        .legal-content p {
+            color: #9CA3AF;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        .legal-content ul,
+        .legal-content ol {
+            color: #9CA3AF;
+            margin-bottom: 1.25rem;
+            padding-left: 2rem;
+        }
+
+        .legal-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-content a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .legal-content a:hover {
+            color: #F9F1D8;
+            text-decoration: underline;
+        }
+
+        .legal-section {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
+            border-left: 4px solid #D4AF37;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .toc h3 {
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: #9CA3AF;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: #D4AF37;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6B7280;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #6B7280;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #D4AF37;
+        }
+
+        .breadcrumb span {
+            color: #D4AF37;
+        }
+
+        /* Last Updated */
+        .last-updated {
+            color: #6B7280;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Contact Info Box */
+        .contact-info-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info-box h4 {
+            color: #D4AF37;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-info-box p {
+            color: #9CA3AF;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+            }
+            .nav-link::after,
+            .back-to-top,
+            .mobile-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="text-center">
+            <div class="loader mx-auto mb-4"></div>
+            <p class="text-gold-500 text-sm uppercase tracking-widest animate-pulse">Загрузка</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-black-900/90 backdrop-blur-md"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <div>
+                            <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
+                            <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
+                    <a href="index.html#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="index.html#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
+                    <a href="index.html#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
+                    <a href="index.html#vacancy" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
+                    <a href="index.html#contact" class="btn-gold px-6 py-2.5 text-sm font-bold uppercase tracking-widest rounded-sm">Связаться</a>
+                </div>
+
+                <button class="lg:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-black-800 z-50 shadow-2xl border-l border-gold-900" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-serif text-xl font-bold text-gold-500">DirectLine</span>
+                <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
+                <a href="index.html#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
+                <a href="index.html#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
+                <a href="index.html#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
+                <a href="index.html#vacancy" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
+                <a href="index.html#contact" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2">Связаться</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="relative pt-32 pb-16 bg-black-900">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute top-20 left-10 w-64 h-64 bg-gold-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-gold-700/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb fade-in">
+                <a href="index.html">Главная</a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <span>Пользовательское соглашение</span>
+            </div>
+
+            <div class="fade-in">
+                <p class="text-gold-500 font-medium tracking-[0.3em] mb-6 uppercase text-sm md:text-base">
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4"></span>
+                    Правовая информация
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4"></span>
+                </p>
+                
+                <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Пользовательское <span class="text-gold-gradient">Соглашение</span>
+                </h1>
+                
+                <p class="text-gray-400 text-lg max-w-3xl">
+                    Официальный документ, регулирующий отношения между пользователем и маркетинговым IT-агентством DirectLine
+                </p>
+
+                <div class="last-updated">
+                    <i class="fas fa-clock text-gold-500 mr-2"></i>
+                    Последнее обновление: <span id="currentDate"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16 bg-black-850">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Table of Contents -->
+            <div class="toc fade-in">
+                <h3><i class="fas fa-list mr-2"></i>Содержание документа</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <li><a href="#section1">1. Общие положения</a></li>
+                    <li><a href="#section2">2. Предмет соглашения</a></li>
+                    <li><a href="#section3">3. Персональные данные</a></li>
+                    <li><a href="#section4">4. Обработка данных</a></li>
+                    <li><a href="#section5">5. Права и обязанности</a></li>
+                    <li><a href="#section6">6. Конфиденциальность</a></li>
+                    <li><a href="#section7">7. Ответственность сторон</a></li>
+                    <li><a href="#section8">8. Заключительные положения</a></li>
+                    <li><a href="#section9">9. Реквизиты оператора</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal Content -->
+            <div class="legal-content">
+                
+                <!-- Section 1 -->
+                <div class="legal-section fade-in" id="section1">
+                    <h2>1. Общие положения</h2>
+                    <p>
+                        Настоящее Пользовательское соглашение (далее — Соглашение) определяет условия использования пользователем (далее — Пользователь) сайта <a href="https://direct-line-sar.ru">direct-line-sar.ru</a> (далее — Сайт), владельцем которого является Индивидуальный предприниматель Дурасов А.Я. (далее — Оператор).
+                    </p>
+                    <p>
+                        Используя Сайт, Пользователь выражает полное и безоговорочное согласие со всеми условиями настоящего Соглашения. Если Пользователь не согласен с условиями Соглашения, он должен немедленно прекратить использование Сайта.
+                    </p>
+                    <div class="highlight-box">
+                        <p class="mb-0">
+                            <i class="fas fa-info-circle text-gold-500 mr-2"></i>
+                            <strong>Важно:</strong> Администрация Сайта оставляет за собой право вносить изменения в настоящее Соглашение в одностороннем порядке. Новая редакция Соглашения вступает в силу с момента ее размещения на Сайте.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="legal-section fade-in" id="section2">
+                    <h2>2. Предмет соглашения</h2>
+                    <p>
+                        2.1. Предметом настоящего Соглашения является предоставление Оператором доступа Пользователю к использованию Сайта, включая возможность заполнения форм обратной связи, получения информации об услугах Оператора и взаимодействия с представителями Оператора.
+                    </p>
+                    <p>
+                        2.2. Сайт предоставляет следующую информацию об услугах Оператора:
+                    </p>
+                    <ul>
+                        <li>Лидогенерация — поиск и первичная обработка потенциальных клиентов</li>
+                        <li>Call-центр — обработка входящих и исходящих звонков</li>
+                        <li>Продвижение на платформе Авито</li>
+                        <li>Рекрутинг — поиск и подбор персонала</li>
+                        <li>Лид-КОД — технология работы с посетителями сайта</li>
+                    </ul>
+                    <p>
+                        2.3. Оператор не несет ответственности за содержание и достоверность информации, предоставленной Пользователем при использовании Сайта.
+                    </p>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="legal-section fade-in" id="section3">
+                    <h2>3. Персональные данные</h2>
+                    <p>
+                        3.1. Я, субъект персональных данных, в соответствии с Федеральным законом от 27 июля 2006 года № 152 «О персональных данных» предоставляю ИП Дурасов А.Я. (далее — Оператор), расположенному по адресу: <strong>г. Саратов, ул. Международная, д. 2А, офис 6</strong>, а также по адресу в сети «Интернет» <a href="https://direct-line-sar.ru">direct-line-sar.ru</a>, даю согласие на обработку персональных данных, указанных мной в форме на сайте в сети «Интернет», владельцем которого является Оператор.
+                    </p>
+                    <p>
+                        3.2. Под персональными данными субъекта персональных данных понимается нижеуказанная общая информация:
+                    </p>
+                    <ul>
+                        <li>Фамилия, Имя, Отчество (ФИО)</li>
+                        <li>Адрес электронной почты (E-mail)</li>
+                        <li>Номер телефона</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p class="mb-0">
+                            <i class="fas fa-shield-alt text-gold-500 mr-2"></i>
+                            <strong>Защита данных:</strong> Оператор принимает все необходимые меры для защиты персональных данных Пользователя от несанкционированного доступа, изменения, раскрытия или уничтожения.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="legal-section fade-in" id="section4">
+                    <h2>4. Обработка данных</h2>
+                    <p>
+                        4.1. Принимая настоящее Соглашение, я выражаю свою заинтересованность и полное согласие, что обработка персональных данных может включать в себя следующие действия:
+                    </p>
+                    <ul>
+                        <li>Сбор персональных данных</li>
+                        <li>Систематизацию и накопление</li>
+                        <li>Хранение и уточнение (обновление, изменение)</li>
+                        <li>Использование в целях предоставления услуг</li>
+                        <li>Передачу (предоставление, доступ) уполномоченным лицам</li>
+                        <li>Блокирование, удаление, уничтожение</li>
+                    </ul>
+                    <p>
+                        4.2. Обработка данных осуществляется как с использованием средств автоматизации (автоматизированная обработка), так и без использования таких средств (неавтоматизированная обработка).
+                    </p>
+                    <p>
+                        4.3. Я понимаю и соглашаюсь с тем, что предоставленная информация является полной, точной и достоверной; при предоставлении информации не нарушается действующее законодательство Российской Федерации, законные права и интересы третьих лиц.
+                    </p>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="legal-section fade-in" id="section5">
+                    <h2>5. Права и обязанности сторон</h2>
+                    <h3>5.1. Права и обязанности Оператора:</h3>
+                    <ul>
+                        <li>Предоставлять Пользователю доступ к функционалу Сайта</li>
+                        <li>Обрабатывать персональные данные в соответствии с законодательством РФ</li>
+                        <li>Обеспечивать конфиденциальность персональных данных</li>
+                        <li>Предоставлять информацию об обработке данных по запросу Пользователя</li>
+                        <li>Приостанавливать или прекращать доступ к Сайту в случае нарушения Соглашения</li>
+                    </ul>
+                    <h3>5.2. Права и обязанности Пользователя:</h3>
+                    <ul>
+                        <li>Использовать Сайт в соответствии с его назначением</li>
+                        <li>Предоставлять достоверную информацию о себе</li>
+                        <li>Не нарушать права третьих лиц при использовании Сайта</li>
+                        <li>Не использовать Сайт для распространения запрещенной информации</li>
+                        <li>Соблюдать требования настоящего Соглашения</li>
+                    </ul>
+                </div>
+
+                <!-- Section 6 -->
+                <div class="legal-section fade-in" id="section6">
+                    <h2>6. Конфиденциальность</h2>
+                    <p>
+                        6.1. Оператор обязуется не разглашать полученную от Пользователя информацию, за исключением случаев, предусмотренных действующим законодательством Российской Федерации.
+                    </p>
+                    <p>
+                        6.2. Вся предоставленная информация заполняется Пользователем в отношении себя лично и не относится к:
+                    </p>
+                    <ul>
+                        <li>Государственной тайне</li>
+                        <li>Банковской тайне</li>
+                        <li>Коммерческой тайне</li>
+                        <li>Информации о расовой и/или национальной принадлежности</li>
+                        <li>Политическим взглядам</li>
+                        <li>Религиозным или философским убеждениям</li>
+                        <li>Информации о состоянии здоровья и интимной жизни</li>
+                    </ul>
+                    <p>
+                        6.3. Оператор не проверяет достоверность персональных данных, предоставляемых Пользователем, и не имеет возможности оценивать его дееспособность.
+                    </p>
+                </div>
+
+                <!-- Section 7 -->
+                <div class="legal-section fade-in" id="section7">
+                    <h2>7. Ответственность сторон</h2>
+                    <p>
+                        7.1. Оператор не несет ответственности за:
+                    </p>
+                    <ul>
+                        <li>Упущенную выгоду Пользователя, связанную с использованием Сайта</li>
+                        <li>Технические сбои в работе Сайта, вызванные действиями третьих лиц</li>
+                        <li>Действия вредоносных программ, если они не были вызваны действиями Оператора</li>
+                        <li>Содержание сайтов третьих лиц, ссылки на которые могут размещаться на Сайте</li>
+                    </ul>
+                    <p>
+                        7.2. Пользователь несет ответственность за:
+                    </p>
+                    <ul>
+                        <li>Достоверность предоставляемой информации</li>
+                        <li>Соблюдение авторских и смежных прав при использовании Сайта</li>
+                        <li>Соблюдение требований законодательства РФ при использовании Сайта</li>
+                    </ul>
+                </div>
+
+                <!-- Section 8 -->
+                <div class="legal-section fade-in" id="section8">
+                    <h2>8. Заключительные положения</h2>
+                    <p>
+                        8.1. Настоящее Соглашение действует по достижении целей обработки или в случае утраты необходимости в достижении этих целей, если иное не предусмотрено федеральным законом.
+                    </p>
+                    <p>
+                        8.2. Согласие может быть отозвано Пользователем в любое время на основании письменного заявления, направленного Оператору по адресу, указанному в разделе 9 настоящего Соглашения.
+                    </p>
+                    <p>
+                        8.3. Все споры и разногласия, возникающие между Сторонами в связи с исполнением настоящего Соглашения, подлежат разрешению путем переговоров. В случае недостижения согласия спор передается на рассмотрение в суд по месту нахождения Оператора.
+                    </p>
+                    <p>
+                        8.4. Настоящее Соглашение составлено в соответствии с законодательством Российской Федерации.
+                    </p>
+                </div>
+
+                <!-- Section 9 -->
+                <div class="legal-section fade-in" id="section9">
+                    <h2>9. Реквизиты оператора</h2>
+                    <div class="contact-info-box">
+                        <h4><i class="fas fa-building mr-2"></i>Юридическая информация</h4>
+                        <p><strong>Оператор:</strong> Индивидуальный предприниматель Дурасов А.Я.</p>
+                        <p><strong>Юридический адрес:</strong> г. Саратов, ул. Международная, д. 2А, офис 6</p>
+                        <p><strong>Адрес сайта:</strong> <a href="https://direct-line-sar.ru">direct-line-sar.ru</a></p>
+                        <hr class="border-white/10 my-4">
+                        <p><strong>ИНН:</strong> 2016007929</p>
+                        <p><strong>КПП:</strong> 201601001</p>
+                        <p><strong>ОГРН:</strong> 1242000003332</p>
+                        <p><strong>Расчетный счет:</strong> 1242000003332</p>
+                    </div>
+
+                    <div class="contact-info-box">
+                        <h4><i class="fas fa-headset mr-2"></i>Контакты для связи</h4>
+                        <p>По всем вопросам, связанным с обработкой персональных данных, Вы можете связаться с нами:</p>
+                        <p><i class="fas fa-envelope text-gold-500 mr-2"></i>Email: info@direct-line-sar.ru</p>
+                        <p><i class="fas fa-phone text-gold-500 mr-2"></i>Телефон: +7 (999) 999-99-99</p>
+                        <p><i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>Адрес: г. Саратов, ул. Международная, д. 2А, офис 6</p>
+                    </div>
+                </div>
+
+                <!-- Acceptance Section -->
+                <div class="legal-section fade-in bg-gold-500/10 border-gold-500/30">
+                    <h2>Принятие соглашения</h2>
+                    <p>
+                        Размещая свои персональные данные на Сайте, Пользователь подтверждает, что ознакомлен с настоящим Соглашением, понимает его условия и принимает их полностью и безоговорочно.
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-check-circle text-gold-500 mr-2"></i>
+                        <strong>Дата вступления в силу:</strong> с момента размещения на сайте
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 fade-in">
+                <a href="index.html" class="btn-gold inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
+                    <i class="fas fa-home mr-2"></i>На главную
+                </a>
+                <a href="politika.html" class="btn-outline inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
+                    <i class="fas fa-file-shield mr-2"></i>Политика конфиденциальности
+                </a>
+                <button onclick="window.print()" class="btn-outline inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
+                    <i class="fas fa-print mr-2"></i>Распечатать
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-black-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold-700/5 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center fade-in">
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">
+                Остались вопросы?
+            </h2>
+            <p class="text-gray-400 mb-8">
+                Свяжитесь с нами для получения дополнительной информации
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+79999999999" class="flex items-center justify-center gap-3 px-8 py-4 bg-gold-500 text-black font-bold uppercase tracking-widest rounded-sm hover:bg-gold-700 transition-all">
+                    <i class="fas fa-phone"></i> Позвонить
+                </a>
+                <a href="mailto:info@direct-line-sar.ru" class="flex items-center justify-center gap-3 px-8 py-4 border border-gold-500 text-gold-500 font-bold uppercase tracking-widest rounded-sm hover:bg-gold-500 hover:text-black transition-all">
+                    <i class="fas fa-envelope"></i> Написать
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black-950 border-t border-white/5 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <div>
+                            <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
+                            <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        Компания DirectLine работает только на результат. Ведь мы зарабатываем только тогда, когда зарабатывают наши клиенты!
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Навигация</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
+                        <li><a href="index.html#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
+                        <li><a href="index.html#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
+                        <li><a href="index.html#vacancy" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Документы</h4>
+                    <ul class="space-y-3">
+                        <li><a href="polzovatelskoe-soglashenie.html" class="text-gold-500 transition-colors text-sm">Пользовательское соглашение</a></li>
+                        <li><a href="politika.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Политика конфиденциальности</a></li>
+                        <li><a href="index.html#faq" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Реквизиты</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><span class="text-gray-500">ИНН:</span> 2016007929</li>
+                        <li><span class="text-gray-500">КПП:</span> 201601001</li>
+                        <li><span class="text-gray-500">ОГРН:</span> 1242000003332</li>
+                        <li><span class="text-gray-500">Р/с:</span> 1242000003332</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-600 text-xs">
+                        © 2024 DirectLine. Все права защищены.
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="polzovatelskoe-soglashenie.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
+                        <a href="politika.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="scrollToTop()" class="back-to-top fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-black-900/95', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-black-900/95', 'shadow-lg');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Set Current Date
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateElement = document.getElementById('currentDate');
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = new Date().toLocaleDateString('ru-RU', options);
+        });
+
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active TOC highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.legal-section');
+            const tocLinks = document.querySelectorAll('.toc a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('text-gold-500');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-gold-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DirectLine - Маркетинговое IT-агентство. Лидогенерация, Call-центр, Авито, Рекрутинг. Поток заинтересованных клиентов для вашего бизнеса.">
+    <title>DirectLine | Маркетинговое IT-агентство</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FEF9E7',
+                            100: '#F9F1D8',
+                            200: '#F2E3B5',
+                            300: '#EEDC9A',
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                            600: '#AA8C2C',
+                            700: '#886F23',
+                            800: '#6B571B',
+                            900: '#4D3F14',
+                        },
+                        black: {
+                            950: '#020202',
+                            900: '#050505',
+                            850: '#080808',
+                            800: '#0A0A0A',
+                            750: '#0D0D0D',
+                            700: '#121212',
+                            650: '#1A1A1A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 4s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shine: {
+                            'to': { backgroundPosition: '200% center' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(to right, #D4AF37, #F9F1D8, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #D4AF37, #AA8C2C);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #F9F1D8, #D4AF37);
+        }
+
+        /* Fade In Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Button Styles */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #F9F1D8 0%, #D4AF37 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: #D4AF37;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Service Card */
+        .service-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .service-card .icon-wrapper {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.1));
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .icon-wrapper {
+            background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+        }
+
+        .service-card:hover .icon-wrapper i {
+            color: #000;
+        }
+
+        /* Stats Card */
+        .stats-card {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Testimonial Card */
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.8), rgba(18, 18, 18, 0.8));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+        }
+
+        /* Form Styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            outline: none;
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: #D4AF37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Particle Background */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #D4AF37;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 15s infinite;
+        }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0.6;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #D4AF37, #F9F1D8);
+            transition: width 0.5s ease;
+        }
+
+        /* Step Indicator */
+        .step-indicator {
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            color: #D4AF37;
+        }
+
+        .step-indicator.completed {
+            color: #D4AF37;
+        }
+
+        /* Checkbox Custom */
+        .checkbox-custom {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkbox-custom:checked {
+            background: #D4AF37;
+            border-color: #D4AF37;
+        }
+
+        .checkbox-custom:checked::after {
+            content: '✓';
+            position: absolute;
+            color: #000;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Case Study Card */
+        .case-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .case-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="text-center">
+            <div class="loader mx-auto mb-4"></div>
+            <p class="text-gold-500 text-sm uppercase tracking-widest animate-pulse">Загрузка</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center gap-3">
+                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <div>
+                            <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
+                            <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#hero" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
+                    <a href="#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
+                    <a href="#vacancy" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
+                    <a href="#contact" class="btn-gold px-6 py-2.5 text-sm font-bold uppercase tracking-widest rounded-sm">Связаться</a>
+                </div>
+
+                <button class="lg:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-black-800 z-50 shadow-2xl border-l border-gold-900" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-serif text-xl font-bold text-gold-500">DirectLine</span>
+                <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#hero" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
+                <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
+                <a href="#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
+                <a href="#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
+                <a href="#vacancy" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2">Связаться</a>
+            </nav>
+            <div class="mt-8 pt-8 border-t border-white/10">
+                <p class="text-gray-500 text-sm mb-4">Контакты</p>
+                <a href="tel:+79999999999" class="block text-white hover:text-gold-500 mb-2">
+                    <i class="fas fa-phone text-gold-500 mr-2"></i>+7 (999) 999-99-99
+                </a>
+                <a href="mailto:info@direct-line-sar.ru" class="block text-white hover:text-gold-500">
+                    <i class="fas fa-envelope text-gold-500 mr-2"></i>info@direct-line-sar.ru
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="C:\Users\I\Desktop\GitHub Repositories\DirectSite\1773323333c8e6.png" alt="DirectLine Hero" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black-900/80 via-black-900/60 to-black-950"></div>
+        </div>
+
+        <div class="absolute inset-0 z-1 overflow-hidden pointer-events-none">
+            <div class="particle" style="top: 20%; left: 10%;"></div>
+            <div class="particle" style="top: 40%; left: 80%; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 60%; left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="top: 80%; left: 70%; animation-delay: 6s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <p class="text-gold-500 font-medium tracking-[0.3em] mb-6 uppercase text-sm md:text-base">
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4"></span>
+                    Искусство маркетинга
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4"></span>
+                </p>
+            </div>
+            
+            <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-tight fade-in" style="transition-delay: 150ms;">
+                А ты готов<br>
+                <span class="text-gold-gradient">МАСШТАБИРОВАТЬ</span> БИЗНЕС?
+            </h1>
+            
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-10 fade-in" style="transition-delay: 300ms;">
+                Наш IT-сервис находит номера телефонов людей, интересующихся вашими продуктами. 
+                Мы делаем первичный обзвон, чтобы отобрать "живые" лиды!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 450ms;">
+                <a href="#contact" class="btn-gold px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    Получить лиды
+                </a>
+                <a href="#services" class="btn-outline px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    Наши услуги
+                </a>
+            </div>
+
+            <div class="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto fade-in" style="transition-delay: 600ms;">
+                <div class="text-center">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-gold-500 mb-1">5</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-widest">Лет на рынке</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-gold-500 mb-1">207+</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-widest">Клиентов</div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number text-3xl md:text-4xl font-bold text-gold-500 mb-1">100%</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-widest">Выгоды</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#services" class="text-gold-500 hover:text-gold-300 transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-black-850 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-gold-500 font-medium tracking-widest mb-4 uppercase text-sm">Наши услуги</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+                    Услуги, которые <span class="text-gold-gradient">помогут</span>
+                </h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
+                <a href="calculator.html" class="inline-block btn-gold px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <i class="fas fa-calculator mr-2"></i>
+                    Рассчитать прибыль
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Lead Generation -->
+                <div class="service-card p-8 rounded-sm fade-in">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-2xl text-gold-500"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Лидогенерация</h3>
+                    <p class="text-gray-400 mb-4">Наш IT-сервис находит номера телефонов людей, интересующихся вашими продуктами. Мы делаем первичный обзвон, чтобы отобрать "живые" лиды!</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#contact" class="text-gold-500 font-medium text-sm uppercase tracking-widest hover:text-gold-300 transition-colors flex items-center gap-2">
+                            Подробнее <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="text-gold-500 font-bold">от 50 000 ₽</span>
+                    </div>
+                </div>
+
+                <!-- Service 2: Call Center -->
+                <div class="service-card p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-2xl text-gold-500"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Call-центр</h3>
+                    <p class="text-gray-400 mb-4">Перезагрузите свою базу клиентов и получите доступ к "теплым" лидам, которые уже заинтересовались вашим предложением!</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#contact" class="text-gold-500 font-medium text-sm uppercase tracking-widest hover:text-gold-300 transition-colors flex items-center gap-2">
+                            Подробнее <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="text-gold-500 font-bold">от 40 000 ₽</span>
+                    </div>
+                </div>
+
+                <!-- Service 3: Avito -->
+                <div class="service-card p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-store text-2xl text-gold-500"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Авито</h3>
+                    <p class="text-gray-400 mb-4">Мы предлагаем бюджетный канал привлечения клиентов через Авито, основанный на опыте наших партнеров.</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#contact" class="text-gold-500 font-medium text-sm uppercase tracking-widest hover:text-gold-300 transition-colors flex items-center gap-2">
+                            Подробнее <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="text-gold-500 font-bold">от 30 000 ₽</span>
+                    </div>
+                </div>
+
+                <!-- Service 4: Recruiting -->
+                <div class="service-card p-8 rounded-sm fade-in" style="transition-delay: 300ms;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl text-gold-500"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Рекрутинг</h3>
+                    <p class="text-gray-400 mb-4">Процесс поиска, привлечения, отбора и найма сотрудников для вакантных позиций в компании.</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#contact" class="text-gold-500 font-medium text-sm uppercase tracking-widest hover:text-gold-300 transition-colors flex items-center gap-2">
+                            Подробнее <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="text-gold-500 font-bold">от 35 000 ₽</span>
+                    </div>
+                </div>
+
+                <!-- Service 5: Lead Code -->
+                <div class="service-card p-8 rounded-sm fade-in" style="transition-delay: 400ms;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-gold-500"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Лид-КОД</h3>
+                    <p class="text-gray-400 mb-4">Мы поможем вам связаться с посетителями вашего сайта, которые не оставили заявку. Превратите их в реальных клиентов!</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#contact" class="text-gold-500 font-medium text-sm uppercase tracking-widest hover:text-gold-300 transition-colors flex items-center gap-2">
+                            Подробнее <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="text-gold-500 font-bold">от 25 000 ₽</span>
+                    </div>
+                </div>
+
+                <!-- Service 6: Complex -->
+                <div class="service-card p-8 rounded-sm fade-in" style="transition-delay: 500ms;">
+                    <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-layer-group text-2xl text-gold-500"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Комплекс</h3>
+                    <p class="text-gray-400 mb-4">Полный пакет услуг для максимального результата. Индивидуальная стратегия под ваш бизнес.</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#contact" class="text-gold-500 font-medium text-sm uppercase tracking-widest hover:text-gold-300 transition-colors flex items-center gap-2">
+                            Подробнее <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="text-gold-500 font-bold">Индивидуально</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-black-900 relative">
+        <div class="absolute inset-0 bg-gold-500/5"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stats-card p-8 rounded-sm text-center fade-in">
+                    <div class="text-5xl md:text-6xl font-serif font-bold text-gold-500 mb-2">5</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-sm">Лет на рынке маркетинговых услуг</p>
+                </div>
+                <div class="stats-card p-8 rounded-sm text-center fade-in" style="transition-delay: 100ms;">
+                    <div class="text-5xl md:text-6xl font-serif font-bold text-gold-500 mb-2">207+</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-sm">Компаний, которые работают с нами на постоянной основе</p>
+                </div>
+                <div class="stats-card p-8 rounded-sm text-center fade-in" style="transition-delay: 200ms;">
+                    <div class="text-5xl md:text-6xl font-serif font-bold text-gold-500 mb-2">100%</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-sm">Выгоды для наших клиентов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="cases" class="py-24 bg-black-850 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-gold-500 font-medium tracking-widest mb-4 uppercase text-sm">Результаты</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+                    Дадим заявки в <span class="text-gold-gradient">любом сегменте</span>
+                </h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Case 1 -->
+                <div class="case-card p-6 rounded-sm fade-in">
+                    <div class="text-gold-500 text-sm uppercase tracking-widest mb-4">Монтаж навесов</div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Звонков</span>
+                            <span class="text-white font-bold">1000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Заявок</span>
+                            <span class="text-gold-500 font-bold">135</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Конверсия</span>
+                            <span class="text-gold-500 font-bold">13,5%</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 13.5%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card p-6 rounded-sm fade-in" style="transition-delay: 100ms;">
+                    <div class="text-gold-500 text-sm uppercase tracking-widest mb-4">Клиника по пересадке волос</div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Звонков</span>
+                            <span class="text-white font-bold">1000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Заявок</span>
+                            <span class="text-gold-500 font-bold">157</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Конверсия</span>
+                            <span class="text-gold-500 font-bold">15,7%</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 15.7%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card p-6 rounded-sm fade-in" style="transition-delay: 200ms;">
+                    <div class="text-gold-500 text-sm uppercase tracking-widest mb-4">Стяжка пола в Москве</div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Звонков</span>
+                            <span class="text-white font-bold">1000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Заявок</span>
+                            <span class="text-gold-500 font-bold">196</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Конверсия</span>
+                            <span class="text-gold-500 font-bold">19,6%</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 19.6%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="case-card p-6 rounded-sm fade-in" style="transition-delay: 300ms;">
+                    <div class="text-gold-500 text-sm uppercase tracking-widest mb-4">Светодиодные экраны</div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Звонков</span>
+                            <span class="text-white font-bold">400</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Лидов</span>
+                            <span class="text-gold-500 font-bold">69</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Конверсия</span>
+                            <span class="text-gold-500 font-bold">17,9%</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 17.9%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-black-900 relative">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-gold-500 font-medium tracking-widest mb-4 uppercase text-sm">Отзывы</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+                    Что говорят <span class="text-gold-gradient">клиенты</span>
+                </h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="testimonial-card p-8 rounded-sm fade-in">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6">
+                        «DirectLine = продажи! DirectLine даёт поток заинтересованных клиентов, с которыми мы теперь напрямую связываемся.»
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gold-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium">Олег Бардак</p>
+                            <p class="text-gray-500 text-sm">Руководитель компании, Твой Стартап</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="testimonial-card p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6">
+                        «С августа 2023 с DirectLine - только положительные эмоции! Постоянный поток клиентов, сделки закрываются на 20 дней быстрее, а настройка скриптов позволяет отсеивать неподходящих.»
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gold-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium">Иван Славуцкий</p>
+                            <p class="text-gray-500 text-sm">Директор компании, IS Consult Group</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="testimonial-card p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6">
+                        «Раньше Яндекс.Директ, соцсети и рассылки не давали прежних результатов. DirectLine стал спасением: теперь у нас достаточно заявок, даже в несезон!»
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gold-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium">Илья Сдобнов</p>
+                            <p class="text-gray-500 text-sm">Руководитель компании, Бурвита</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="testimonial-card p-8 rounded-sm fade-in" style="transition-delay: 300ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6">
+                        «С момента когда я начала сотрудничать с DirectLine прошло уже немало времени. Главная проблема моего сегмента являлось не стабильный поток заявок. Я сводил это на уникальность моего сегмента. Но с вами я понял, что можно получать заявки стабильно и ежедневно.»
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gold-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium">Оксана</p>
+                            <p class="text-gray-500 text-sm">Ведущий маркетолог</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="testimonial-card p-8 rounded-sm fade-in" style="transition-delay: 400ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6">
+                        «Профессионализм, открытость, оперативность решения любых вопросов, эффективность - это то, что делает наше сотрудничество взаимовыгодным и максимально приятным в работе. Спасибо команде (операторы просто Топ) за результат, которого мы вместе добились»
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gold-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium">Константин</p>
+                            <p class="text-gray-500 text-sm">Директор компании по установке Септиков</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="testimonial-card p-8 rounded-sm fade-in" style="transition-delay: 500ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                        <i class="fas fa-star text-gold-500"></i>
+                    </div>
+                    <p class="text-gray-400 italic mb-6">
+                        «Профессионализм, открытость, оперативность решения любых вопросов, эффективность - это то, что делает наше сотрудничество взаимовыгодным и максимально приятным в работе. <br />Спасибо команде (операторы просто Топ) за результат, которого мы вместе добились»
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-500/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-gold-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-medium">Павел</p>
+                            <p class="text-gray-500 text-sm">Руководитель компании по ремонту квартир</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vacancy Section -->
+    <section id="vacancy" class="py-24 bg-black-850 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in-left">
+                    <p class="text-gold-500 font-medium tracking-widest mb-4 uppercase text-sm">Карьера</p>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+                        Присоединяйся к <span class="text-gold-gradient">команде</span>
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Мы постоянно ищем талантливых специалистов, готовых расти вместе с нами. 
+                        Если ты хочешь работать в динамичной команде и развиваться в сфере маркетинга — мы ждем тебя!
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Конкурентная зарплата</h4>
+                                <p class="text-gray-500 text-sm">Достойное вознаграждение за твой труд</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Обучение и развитие</h4>
+                                <p class="text-gray-500 text-sm">Постоянный профессиональный рост</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">Гибкий график</h4>
+                                <p class="text-gray-500 text-sm">Возможность удаленной работы</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn-gold inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        Смотреть вакансии
+                    </a>
+                </div>
+
+                <div class="fade-in-right">
+                    <div class="bg-black-800 border border-white/10 p-8 rounded-sm">
+                        <h3 class="font-serif text-2xl text-white mb-6">Открытые позиции</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-black-700 rounded-sm border border-white/5 hover:border-gold-500 transition-colors">
+                                <div>
+                                    <h4 class="text-white font-medium">Менеджер по продажам</h4>
+                                    <p class="text-gray-500 text-sm">от 80 000 ₽</p>
+                                </div>
+                                <span class="text-gold-500 text-sm">Активно</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-black-700 rounded-sm border border-white/5 hover:border-gold-500 transition-colors">
+                                <div>
+                                    <h4 class="text-white font-medium">Оператор call-центра</h4>
+                                    <p class="text-gray-500 text-sm">от 50 000 ₽</p>
+                                </div>
+                                <span class="text-gold-500 text-sm">Активно</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-black-700 rounded-sm border border-white/5 hover:border-gold-500 transition-colors">
+                                <div>
+                                    <h4 class="text-white font-medium">Маркетолог</h4>
+                                    <p class="text-gray-500 text-sm">от 70 000 ₽</p>
+                                </div>
+                                <span class="text-gold-500 text-sm">Активно</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Step Contact Form -->
+    <section id="contact" class="py-24 bg-black-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold-700/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <p class="text-gold-500 font-medium tracking-widest mb-4 uppercase text-sm">Контакты</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+                    Сделаем ваш бизнес <span class="text-gold-gradient">лучше!</span>
+                </h2>
+                <p class="text-gray-400">Заполните форму обратной связи и мы с вами свяжемся в ближайшее время</p>
+            </div>
+
+            <div class="bg-black-800 border border-white/10 p-8 rounded-sm fade-in">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="step-indicator active text-gold-500 text-sm" id="step1Indicator">Шаг 1</span>
+                        <span class="step-indicator text-gray-500 text-sm" id="step2Indicator">Шаг 2</span>
+                        <span class="step-indicator text-gray-500 text-sm" id="step3Indicator">Шаг 3</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 33%"></div>
+                    </div>
+                </div>
+
+                <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
+                    <!-- Step 1 -->
+                    <div class="step" id="step1">
+                        <div class="text-center mb-8">
+                            <img src="https://static.tildacdn.com/tild3933-6366-4466-a239-373262323838/_.jpg" alt="Злата Сорокина" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gold-500">
+                            <h3 class="text-white font-medium mb-1">Злата Сорокина</h3>
+                            <p class="text-gold-500 text-sm">Руководитель отдела продаж</p>
+                        </div>
+                        <p class="text-gray-400 text-center mb-6">Что предоставляет ваш бизнес?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="business_type" value="services" class="hidden" onchange="nextStep(2)">
+                                <div class="p-4 bg-black-700 border border-white/10 rounded-sm text-center hover:border-gold-500 transition-colors peer-checked:border-gold-500 peer-checked:bg-gold-500/10">
+                                    <i class="fas fa-briefcase text-gold-500 text-2xl mb-2"></i>
+                                    <p class="text-white text-sm">Услуги</p>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="business_type" value="products" class="hidden" onchange="nextStep(2)">
+                                <div class="p-4 bg-black-700 border border-white/10 rounded-sm text-center hover:border-gold-500 transition-colors peer-checked:border-gold-500 peer-checked:bg-gold-500/10">
+                                    <i class="fas fa-box text-gold-500 text-2xl mb-2"></i>
+                                    <p class="text-white text-sm">Товары</p>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="business_type" value="franchise" class="hidden" onchange="nextStep(2)">
+                                <div class="p-4 bg-black-700 border border-white/10 rounded-sm text-center hover:border-gold-500 transition-colors peer-checked:border-gold-500 peer-checked:bg-gold-500/10">
+                                    <i class="fas fa-store text-gold-500 text-2xl mb-2"></i>
+                                    <p class="text-white text-sm">Франшиза</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step hidden" id="step2">
+                        <p class="text-gray-400 text-center mb-6">Какая услуга вас интересует?</p>
+                        <div class="space-y-3 mb-6">
+                            <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
+                                <input type="checkbox" name="service" value="leadgen" class="checkbox-custom">
+                                <span class="text-white">Лидогенерация</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
+                                <input type="checkbox" name="service" value="callcenter" class="checkbox-custom">
+                                <span class="text-white">Call-центр</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
+                                <input type="checkbox" name="service" value="avito" class="checkbox-custom">
+                                <span class="text-white">Авито под ключ</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
+                                <input type="checkbox" name="service" value="recruiting" class="checkbox-custom">
+                                <span class="text-white">Рекрутинг</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
+                                <input type="checkbox" name="service" value="leadcode" class="checkbox-custom">
+                                <span class="text-white">Лид-КОД</span>
+                            </label>
+                        </div>
+                        <div class="flex gap-4">
+                            <button type="button" onclick="prevStep(1)" class="btn-outline flex-1 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">Назад</button>
+                            <button type="button" onclick="nextStep(3)" class="btn-gold flex-1 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">Далее</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step hidden" id="step3">
+                        <p class="text-gray-400 text-center mb-6">Свяжитесь с нами</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Имя</label>
+                                <input type="text" name="name" class="form-input w-full px-4 py-3 text-white rounded-sm" placeholder="Ваше имя" required>
+                            </div>
+                            <div>
+                                <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Телефон</label>
+                                <input type="tel" name="phone" class="form-input w-full px-4 py-3 text-white rounded-sm" placeholder="+7 (999) 999-99-99" required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Комментарий</label>
+                            <textarea name="comment" rows="3" class="form-input w-full px-4 py-3 text-white rounded-sm" placeholder="Дополнительная информация"></textarea>
+                        </div>
+                        <div class="flex gap-4">
+                            <button type="button" onclick="prevStep(2)" class="btn-outline flex-1 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">Назад</button>
+                            <button type="submit" class="btn-gold flex-1 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">Отправить</button>
+                        </div>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div class="step hidden text-center py-12" id="successStep">
+                        <div class="w-20 h-20 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-4xl text-gold-500"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl text-white mb-4">Спасибо!</h3>
+                        <p class="text-gray-400 mb-6">Мы свяжемся с вами в ближайшее время, чтобы подобрать подходящий спосо�� увеличить ваши продажи.</p>
+                        <img src="https://static.tildacdn.com/tild3933-6366-4466-a239-373262323838/_.jpg" alt="Злата Сорокина" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-gold-500">
+                        <p class="text-white font-medium">Злата Сорокина</p>
+                        <p class="text-gold-500 text-sm">Руководитель отдела продаж</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-black-850 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-gold-500 font-medium tracking-widest mb-4 uppercase text-sm">FAQ</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+                    Часто задаваемые <span class="text-gold-gradient">вопросы</span>
+                </h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="accordion-item bg-black-800 border border-white/10 rounded-sm fade-in">
+                    <button class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleAccordion(this)">
+                        <span class="text-lg font-medium text-white">Как начать сотрудничество?</span>
+                        <i class="fas fa-chevron-down accordion-icon text-gold-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-gray-400 leading-relaxed">
+                            <p>Оставьте заявку на сайте или свяжитесь с нами по телефону. Наш менеджер свяжется с вами в течение рабочего дня для обсуждения деталей и подбора оптимального решения для вашего бизнеса.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-black-800 border border-white/10 rounded-sm fade-in">
+                    <button class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleAccordion(this)">
+                        <span class="text-lg font-medium text-white">Какие гарантии вы предоставляете?</span>
+                        <i class="fas fa-chevron-down accordion-icon text-gold-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-gray-400 leading-relaxed">
+                            <p>Мы работаем только на результат. Ведь мы зарабатываем только тогда, когда зарабатывают наши клиенты! Все условия прописываются в договоре.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-black-800 border border-white/10 rounded-sm fade-in">
+                    <button class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleAccordion(this)">
+                        <span class="text-lg font-medium text-white">С какими нишами вы работаете?</span>
+                        <i class="fas fa-chevron-down accordion-icon text-gold-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-gray-400 leading-relaxed">
+                            <p>Мы даем заявки в любом сегменте: услуги, товары, франшизы. Наши решения адаптируются под специфику вашего бизнеса.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-black-800 border border-white/10 rounded-sm fade-in">
+                    <button class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleAccordion(this)">
+                        <span class="text-lg font-medium text-white">Как быстро я получу первые лиды?</span>
+                        <i class="fas fa-chevron-down accordion-icon text-gold-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-gray-400 leading-relaxed">
+                            <p>Первые результаты вы получите уже в первую неделю работы. Полная настройка и запуск занимают от 3 до 7 дней в зависимости от выбранной услуги.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black-950 border-t border-white/5 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <div>
+                            <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
+                            <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        Компания DirectLine работает только на результат. Ведь мы зарабатываем только тогда, когда зарабатывают наши клиенты!
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Навигация</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#hero" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
+                        <li><a href="#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
+                        <li><a href="#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
+                        <li><a href="#vacancy" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Услуги</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Лидогенерация</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Call-центр</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Авито под ключ</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Рекрутинг</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Лид-КОД</a></li>
+                        <li><a href="calculator.html" class="text-gold-500 hover:text-gold-300 transition-colors text-sm font-medium"><i class="fas fa-calculator mr-2"></i>Калькулятор прибыли</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Реквизиты</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><span class="text-gray-500">ИНН:</span> 2016007929</li>
+                        <li><span class="text-gray-500">КПП:</span> 201601001</li>
+                        <li><span class="text-gray-500">ОГРН:</span> 1242000003332</li>
+                        <li><span class="text-gray-500">Р/с:</span> 1242000003332</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-600 text-xs">
+                        © 2026 DirectLine. Все права защищены.
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="https://direct-line-sar.ru/polzovatelskoe-soglashenie" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
+                        <a href="https://direct-line-sar.ru/politika" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="scrollToTop()" class="back-to-top fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/79999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp text-3xl text-white"></i>
+    </a>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-black-900/95', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-black-900/95', 'shadow-lg');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(acc => {
+                acc.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Multi-Step Form
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function nextStep(step) {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).classList.remove('hidden');
+            updateProgress();
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).classList.remove('hidden');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            for (let i = 1; i <= totalSteps; i++) {
+                const indicator = document.getElementById(`step${i}Indicator`);
+                if (i < currentStep) {
+                    indicator.classList.add('completed');
+                    indicator.classList.remove('active');
+                } else if (i === currentStep) {
+                    indicator.classList.add('active');
+                    indicator.classList.remove('completed');
+                } else {
+                    indicator.classList.remove('active', 'completed');
+                }
+            }
+        }
+
+        function submitForm() {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            document.getElementById('successStep').classList.remove('hidden');
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('step3Indicator').classList.add('completed');
+            document.getElementById('step3Indicator').classList.remove('active');
+        }
+
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter Animation
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.ceil(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Initialize counters when visible
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(num => {
+                        const text = num.textContent;
+                        const value = parseInt(text.replace(/\D/g, ''));
+                        const suffix = text.replace(/[\d]/g, '');
+                        num.textContent = '0' + suffix;
+                        animateCounter(num, value, suffix);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('#hero .grid');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="DirectLine - Маркетинговое IT-агентство. Лидогенерация, Call-центр, Авито, Рекрутинг. Поток заинтересованных клиентов для вашего бизнеса.">
     <title>DirectLine | Маркетинговое IT-агентство</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,12 +70,18 @@
 
         html {
             scroll-behavior: smooth;
+            height: 100%;
+            height: 100dvh;
+            overflow-x: hidden;
         }
 
         body {
             background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
+            min-height: 100%;
+            min-height: 100dvh;
+            -webkit-overflow-scrolling: touch;
         }
 
         .text-gold-gradient {
@@ -254,14 +260,26 @@
 
         /* Back to Top */
         .back-to-top {
+            position: fixed !important;
+            top: auto !important;
+            bottom: 90px !important;
+            right: 20px !important;
+            z-index: 99 !important;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            transform: translateZ(0) !important;
+            -webkit-transform: translateZ(0) !important;
+            will-change: auto !important;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
         }
 
         .back-to-top.visible {
             opacity: 1;
             visibility: visible;
+            transform: translateZ(0) !important;
+            -webkit-transform: translateZ(0) !important;
         }
 
         /* Preloader */
@@ -384,26 +402,14 @@
             transform: translateY(-5px);
         }
 
-        /* Floating WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        /* Mobile Responsive for Back to Top */
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 10vh !important;
+                right: 4vw !important;
+                width: 52px;
+                height: 52px;
+            }
         }
 
         /* Section Divider */
@@ -445,7 +451,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar" style="top: 0; left: 0;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
@@ -1166,7 +1172,7 @@
                             <i class="fas fa-check text-4xl text-gold-500"></i>
                         </div>
                         <h3 class="font-serif text-2xl text-white mb-4">Спасибо!</h3>
-                        <p class="text-gray-400 mb-6">Мы свяжемся с вами в ближайшее время, чтобы подобрать подходящий спосо�� увеличить ваши продажи.</p>
+                        <p class="text-gray-400 mb-6">Мы свяжемся с вами в ближайшее время, чтобы подобрать подходящий спосо������ увеличить ваши продажи.</p>
                         <img src="https://static.tildacdn.com/tild3933-6366-4466-a239-373262323838/_.jpg" alt="Злата Сорокина" class="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-gold-500">
                         <p class="text-white font-medium">Злата Сорокина</p>
                         <p class="text-gold-500 text-sm">Руководитель отдела продаж</p>
@@ -1316,15 +1322,15 @@
         </div>
     </footer>
 
+    <!-- Floating Action Button -->
+    <a href="#contact" class="fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-400 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+        <i class="fas fa-comment-dots text-2xl"></i>
+    </a>
+
     <!-- Back to Top Button -->
-    <button onclick="scrollToTop()" class="back-to-top fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+    <button onclick="scrollToTop()" class="back-to-top bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/79999999999" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp text-3xl text-white"></i>
-    </a>
 
     <script>
         // Preloader

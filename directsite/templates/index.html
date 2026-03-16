@@ -495,7 +495,7 @@
                 <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
                 <a href="#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
                 <a href="#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
-                <a href="vacancy.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
+                <a href="{% url 'vacancy' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
                 <a href="#contact" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2">Связаться</a>
             </nav>
             <div class="mt-8 pt-8 border-t border-white/10">
@@ -584,7 +584,7 @@
                     Услуги, которые <span class="text-gold-gradient">помогут</span>
                 </h2>
                 <div class="w-24 h-1 bg-gold-500 mx-auto mb-6"></div>
-                <a href="calculator.html" class="inline-block btn-gold px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                <a href="{% url 'calculator' %}" class="inline-block btn-gold px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                     <i class="fas fa-calculator mr-2"></i>
                     Рассчитать прибыль
                 </a>
@@ -1015,7 +1015,7 @@
                         </div>
                     </div>
 
-                    <a href="vacancy.html" class="btn-gold inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <a href="{% url 'vacancy' %}" class="btn-gold inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Смотреть вакансии
                     </a>
                 </div>
@@ -1317,8 +1317,8 @@
                         <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
                         <li><a href="#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
                         <li><a href="#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
-                        <li><a href="vacancy.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
-                        <li><a href="contacts.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
+                        <li><a href="{% url 'vacancy' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
+                        <li><a href="{% url 'contacts' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
                     </ul>
                 </div>
 
@@ -1330,7 +1330,7 @@
                         <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Авито под ключ</a></li>
                         <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Рекрутинг</a></li>
                         <li><a href="#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Лид-КОД</a></li>
-                        <li><a href="calculator.html" class="text-gold-500 hover:text-gold-300 transition-colors text-sm font-medium"><i class="fas fa-calculator mr-2"></i>Калькулятор прибыли</a></li>
+                        <li><a href="{% url 'calculator' %}" class="text-gold-500 hover:text-gold-300 transition-colors text-sm font-medium"><i class="fas fa-calculator mr-2"></i>Калькулятор прибыли</a></li>
                     </ul>
                 </div>
 
@@ -1351,8 +1351,8 @@
                         © 2026 DirectLine. Все права защищены.
                     </p>
                     <div class="flex gap-6">
-                        <a href="polzovatelskoe-soglashenie.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
-                        <a href="privacy-policy.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
+                        <a href="{% url 'user_agreement' %}" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
+                        <a href="{% url 'privacy_policy' %}" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
                     </div>
                 </div>
             </div>

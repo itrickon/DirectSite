@@ -231,7 +231,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center gap-3">
+                    <a href="{% url 'index' %}" class="flex items-center gap-3">
                         <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
@@ -241,9 +241,9 @@
                 </div>
 
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
-                    <a href="index.html#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
-                    <a href="index.html#contact" class="btn-gold px-6 py-2.5 text-sm font-bold uppercase tracking-widest">Связаться</a>
+                    <a href="{% url 'index' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
+                    <a href="{% url 'index' %}#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="{% url 'index' %}#contact" class="btn-gold px-6 py-2.5 text-sm font-bold uppercase tracking-widest">Связаться</a>
                 </div>
             </div>
         </div>
@@ -429,7 +429,7 @@
 
                     <!-- CTA -->
                     <div class="mt-8 text-center">
-                        <a href="index.html#contact" class="btn-gold inline-block">
+                        <a href="{% url 'index' %}#contact" class="btn-gold inline-block">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Начать получать лиды
                         </a>

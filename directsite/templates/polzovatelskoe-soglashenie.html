@@ -381,7 +381,7 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center gap-3">
+                    <a href="{% url 'index' %}" class="flex items-center gap-3">
                         <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
@@ -391,7 +391,7 @@
                 </div>
 
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
+                    <a href="{% url 'index' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
                     <a href="index.html#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
                     <a href="index.html#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
                     <a href="index.html#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
@@ -416,7 +416,7 @@
                 </button>
             </div>
             <nav class="space-y-4">
-                <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
+                <a href="{% url 'index' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
                 <a href="index.html#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
                 <a href="index.html#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
                 <a href="index.html#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
@@ -436,7 +436,7 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Breadcrumb -->
             <div class="breadcrumb fade-in">
-                <a href="index.html">Главная</a>
+                <a href="{% url 'index' %}">Главная</a>
                 <i class="fas fa-chevron-right text-xs"></i>
                 <span>Пользовательское соглашение</span>
             </div>
@@ -692,10 +692,10 @@
 
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 mt-12 fade-in">
-                <a href="index.html" class="btn-gold inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
+                <a href="{% url 'index' %}" class="btn-gold inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
                     <i class="fas fa-home mr-2"></i>На главную
                 </a>
-                <a href="privacy-policy.html" class="btn-outline inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
+                <a href="{% url 'privacy_policy' %}" class="btn-outline inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
                     <i class="fas fa-file-shield mr-2"></i>Политика конфиденциальности
                 </a>
                 <button onclick="window.print()" class="btn-outline inline-block px-8 py-3 text-sm font-bold uppercase tracking-widest rounded-sm text-center">
@@ -761,7 +761,7 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Навигация</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
+                        <li><a href="{% url 'index' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
                         <li><a href="index.html#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
                         <li><a href="index.html#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
                         <li><a href="index.html#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
@@ -773,8 +773,8 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Документы</h4>
                     <ul class="space-y-3">
-                        <li><a href="polzovatelskoe-soglashenie.html" class="text-gold-500 transition-colors text-sm">Пользовательское соглашение</a></li>
-                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Политика конфиденциальности</a></li>
+                        <li><a href="{% url 'user_agreement' %}" class="text-gold-500 transition-colors text-sm">Пользовательское соглашение</a></li>
+                        <li><a href="{% url 'privacy_policy' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Политика конфиденциальности</a></li>
                         <li><a href="index.html#faq" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">FAQ</a></li>
                     </ul>
                 </div>
@@ -796,8 +796,8 @@
                         © 2026 DirectLine. Все права защищены.
                     </p>
                     <div class="flex gap-6">
-                        <a href="polzovatelskoe-soglashenie.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
-                        <a href="privacy-policy.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
+                        <a href="{% url 'user_agreement' %}" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
+                        <a href="{% url 'privacy_policy' %}" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,672 @@
+/**
+ * DirectLine - Основные стили
+ * Маркетинговое IT-агентство
+ */
+
+/*БАЗОВЫЕ СТИЛИ*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    height: 100dvh;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100%;
+    min-height: 100dvh;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ТИПОГРАФИКА И ЦВЕТА*/
+
+.text-gold-gradient {
+    background: linear-gradient(to right, #D4AF37, #F9F1D8, #D4AF37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+/*КАСТОМНЫЙ СКРОЛЛБАР*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37, #AA8C2C);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #F9F1D8, #D4AF37);
+}
+
+/*АНИМАЦИИ FADE-IN*/
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/*КНОПКИ*/
+
+.btn-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+    color: #000;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, #F9F1D8 0%, #D4AF37 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-outline {
+    border: 2px solid #D4AF37;
+    color: #D4AF37;
+    transition: all 0.3s ease;
+    background: transparent;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.btn-outline:hover {
+    background: #D4AF37;
+    color: #000;
+    transform: translateY(-3px);
+}
+
+/*НАВИГАЦИЯ*/
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D4AF37;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/*МОБИЛЬНОЕ МЕНЮ*/
+
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/*КНОПКА НАВЕРХ*/
+
+.back-to-top {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 90px !important;
+    right: 20px !important;
+    z-index: 99 !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: auto !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 10vh !important;
+        right: 4vw !important;
+        width: 52px;
+        height: 52px;
+    }
+}
+
+/*ПРЕЛОАДЕР*/
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(212, 175, 55, 0.2);
+    border-top-color: #D4AF37;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/*КАРТОЧКИ УСЛУГ*/
+
+.service-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+}
+
+.service-card .icon-wrapper {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.1));
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .icon-wrapper {
+    background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+}
+
+.service-card:hover .icon-wrapper i {
+    color: #000;
+}
+
+/*ФОРМЫ*/
+
+.form-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.form-input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: #6B7280;
+}
+
+/*КАЛЬКУЛЯТОР - СПЕЦИФИЧНЫЕ СТИЛИ*/
+
+.result-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    border-color: #D4AF37;
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+}
+
+/* Range Input Custom */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #D4AF37;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Label Styles */
+.input-label {
+    display: block;
+    color: #9CA3AF;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-hint {
+    color: #6B7280;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/*ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ*/
+
+/* Particle Background */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #D4AF37;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float-particle 15s infinite;
+}
+
+@keyframes float-particle {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0.6;
+    }
+}
+
+/* Section Divider */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* Accordion Styles */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6B7280;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+    color: #6B7280;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #D4AF37;
+}
+
+.breadcrumb span {
+    color: #D4AF37;
+}
+
+/* Feature List */
+.feature-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #9CA3AF;
+    list-style: none;
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4AF37;
+    font-weight: bold;
+}
+
+/* Pricing Card */
+.pricing-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.pricing-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-5px);
+}
+
+.pricing-card.featured {
+    border-color: #D4AF37;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.pricing-card.featured::before {
+    content: 'Популярный';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #D4AF37;
+    color: #000;
+    padding: 4px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+}
+
+/* Contact Card */
+.contact-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s ease;
+}
+
+.contact-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+}
+
+.contact-card .icon-wrapper {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.1));
+    transition: all 0.4s ease;
+}
+
+.contact-card:hover .icon-wrapper {
+    background: linear-gradient(135deg, #D4AF37, #AA8C2C);
+}
+
+.contact-card:hover .icon-wrapper i {
+    color: #000;
+}
+
+/* Social Link */
+.social-link {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9CA3AF;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    border-color: #D4AF37;
+    color: #D4AF37;
+    transform: translateY(-3px);
+}
+
+/* Working Hours */
+.working-hours {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 3rem;
+}
+
+.success-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal */
+.modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+/* Tab Navigation */
+.tab-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: #D4AF37;
+    border-color: #D4AF37;
+    color: #000;
+}
+
+.tab-btn:hover:not(.active) {
+    border-color: #D4AF37;
+    color: #D4AF37;
+}
+
+/* Map Container */
+.map-container {
+    filter: grayscale(100%) invert(90%);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover {
+    filter: grayscale(50%) invert(85%);
+}
+
+/* Case Study Card */
+.case-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s ease;
+}
+
+.case-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-5px);
+}
+
+/* Stats Card */
+.stats-card {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.8), rgba(18, 18, 18, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    border-color: #D4AF37;
+    transform: translateY(-5px);
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #D4AF37, #F9F1D8);
+    transition: width 0.5s ease;
+}
+
+/* Step Indicator */
+.step-indicator {
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+    color: #D4AF37;
+}
+
+.step-indicator.completed {
+    color: #D4AF37;
+}
+
+/* Checkbox Custom */
+.checkbox-custom {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-custom:checked {
+    background: #D4AF37;
+    border-color: #D4AF37;
+}
+
+.checkbox-custom:checked::after {
+    content: '✓';
+    position: absolute;
+    color: #000;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

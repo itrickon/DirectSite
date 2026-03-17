@@ -12,224 +12,21 @@
     <link rel="canonical" href="https://direct-line-sar.ru/calculator/">
     <link rel="icon" href="{% static 'images/DirectLine_6.png' %}" type="image/png">
     <title>Калькулятор Прибыли | DirectLine</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0;600;0;700;1,400&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            50: '#FEF9E7',
-                            100: '#F9F1D8',
-                            200: '#F2E3B5',
-                            300: '#EEDC9A',
-                            400: '#D4AF37',
-                            500: '#C5A028',
-                            600: '#AA8C2C',
-                            700: '#886F23',
-                            800: '#6B571B',
-                            900: '#4D3F14',
-                        },
-                        black: {
-                            950: '#020202',
-                            900: '#050505',
-                            850: '#080808',
-                            800: '#0A0A0A',
-                            750: '#0D0D0D',
-                            700: '#121212',
-                            650: '#1A1A1A',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #050505;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .text-gold-gradient {
-            background: linear-gradient(to right, #D4AF37, #F9F1D8, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: shine 4s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0A0A0A;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #D4AF37, #AA8C2C);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #F9F1D8, #D4AF37);
-        }
-
-        /* Form Input Styles */
-        .form-input {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .form-input:focus {
-            border-color: #D4AF37;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            outline: none;
-        }
-
-        .form-input::placeholder {
-            color: #6B7280;
-        }
-
-        /* Button Styles */
-        .btn-gold {
-            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
-            color: #000;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            padding: 0.875rem 2rem;
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .btn-gold:hover {
-            background: linear-gradient(135deg, #F9F1D8 0%, #D4AF37 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Result Card */
-        .result-card {
-            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .result-card:hover {
-            border-color: #D4AF37;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
-        }
-
-        /* Fade In Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Navigation */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #D4AF37;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Range Input Custom */
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #D4AF37;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Label Styles */
-        .input-label {
-            display: block;
-            color: #9CA3AF;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .input-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .input-hint {
-            color: #6B7280;
-            font-size: 0.75rem;
-            margin-top: 0.25rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'js/tailwind-config.js' %}"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-black">
 
@@ -310,7 +107,7 @@
                             value="50"
                             class="mt-3"
                         >
-                        <p class="input-hint">Сколько клиентов вы обслуживаете ежемесячно</p>
+                        <p class="input-hint">Сколько клиентов вы обслуживаете ежемесяжно</p>
                     </div>
 
                     <!-- Средний чек -->
@@ -477,99 +274,7 @@
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Синхронизация input и range
-            function syncInputs(numberId, rangeId) {
-                const numberInput = document.getElementById(numberId);
-                const rangeInput = document.getElementById(rangeId);
-
-                if (numberInput && rangeInput) {
-                    rangeInput.addEventListener('input', () => {
-                        numberInput.value = rangeInput.value;
-                    });
-
-                    numberInput.addEventListener('input', () => {
-                        rangeInput.value = numberInput.value;
-                    });
-                }
-            }
-
-            syncInputs('clientsCount', 'clientsCountRange');
-            syncInputs('averageCheck', 'averageCheckRange');
-            syncInputs('conversionRate', 'conversionRateRange');
-            syncInputs('growthRate', 'growthRateRange');
-
-            // Функция расчета
-            function calculateProfit() {
-                const clientsCount = parseFloat(document.getElementById('clientsCount').value) || 0;
-                const averageCheck = parseFloat(document.getElementById('averageCheck').value) || 0;
-                const conversionRate = parseFloat(document.getElementById('conversionRate').value) || 0;
-                const growthRate = parseFloat(document.getElementById('growthRate').value) || 0;
-
-                console.log('Input values:', { clientsCount, averageCheck, conversionRate, growthRate });
-
-                // Текущая выручка
-                const currentRevenue = clientsCount * averageCheck;
-
-                // Новые клиенты
-                const newClients = Math.round(clientsCount * (growthRate / 100));
-
-                // Дополнительная выручка
-                const additionalRevenue = newClients * averageCheck;
-
-                // Итоговая выручка
-                const totalRevenue = currentRevenue + additionalRevenue;
-
-                // Форматирование чисел
-                const formatNumber = (num) => {
-                    return num.toLocaleString('ru-RU');
-                };
-
-                const formatCurrency = (num) => {
-                    return num.toLocaleString('ru-RU') + ' ₽';
-                };
-
-                // Отображение результатов
-                const currentRevenueEl = document.getElementById('currentRevenue');
-                const newClientsEl = document.getElementById('newClients');
-                const additionalRevenueEl = document.getElementById('additionalRevenue');
-                const totalRevenueEl = document.getElementById('totalRevenue');
-                const resultsEl = document.getElementById('results');
-
-                if (currentRevenueEl && newClientsEl && additionalRevenueEl && totalRevenueEl && resultsEl) {
-                    currentRevenueEl.textContent = formatCurrency(currentRevenue);
-                    newClientsEl.textContent = formatNumber(newClients);
-                    additionalRevenueEl.textContent = formatCurrency(additionalRevenue);
-                    totalRevenueEl.textContent = formatCurrency(totalRevenue);
-
-                    // Показываем результаты
-                    resultsEl.classList.remove('hidden');
-                    
-                    // Плавный скролл к результатам
-                    setTimeout(() => {
-                        resultsEl.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }, 100);
-                }
-            }
-
-            // Расчет по кнопке
-            const calculateBtn = document.getElementById('calculateBtn');
-            if (calculateBtn) {
-                calculateBtn.addEventListener('click', calculateProfit);
-            }
-
-            // Анимация при загрузке
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('visible');
-                }, index * 100);
-            });
-        });
-    </script>
+    <!-- Main JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Команда DirectLine - маркетинговое IT-агентство. Познакомьтесь с нашими опытными руководителями и специалистами.">
+    <title>Команда | DirectLine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FEF9E7',
+                            100: '#F9F1D8',
+                            200: '#F2E3B5',
+                            300: '#EEDC9A',
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                            600: '#AA8C2C',
+                            700: '#886F23',
+                            800: '#6B571B',
+                            900: '#4D3F14',
+                        },
+                        black: {
+                            950: '#020202',
+                            900: '#050505',
+                            850: '#080808',
+                            800: '#0A0A0A',
+                            750: '#0D0D0D',
+                            700: '#121212',
+                            650: '#1A1A1A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 4s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shine: {
+                            'to': { backgroundPosition: '200% center' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(to right, #D4AF37, #F9F1D8, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #D4AF37, #AA8C2C);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #F9F1D8, #D4AF37);
+        }
+
+        /* Fade In Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Button Styles */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #F9F1D8 0%, #D4AF37 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: #D4AF37;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Team Card */
+        .team-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .team-card .image-wrapper {
+            overflow: hidden;
+        }
+
+        .team-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .team-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .team-card .social-links {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover .social-links {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: #D4AF37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6B7280;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #6B7280;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #D4AF37;
+        }
+
+        .breadcrumb span {
+            color: #D4AF37;
+        }
+
+        /* Stats Counter */
+        .stats-card {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Social Link */
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="text-center">
+            <div class="loader mx-auto mb-4"></div>
+            <p class="text-gold-500 text-sm uppercase tracking-widest animate-pulse">Загрузка</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-black-900/90 backdrop-blur-md"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <div>
+                            <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
+                            <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
+                    <a href="index.html#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="index.html#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
+                    <a href="index.html#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
+                    <a href="vacancy.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
+                    <a href="team.html" class="nav-link text-gold-500 text-sm font-bold">Команда</a>
+                    <a href="conacts.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Контакты</a>
+                </div>
+
+                <button class="lg:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-black-800 z-50 shadow-2xl border-l border-gold-900" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-serif text-xl font-bold text-gold-500">DirectLine</span>
+                <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
+                <a href="index.html#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
+                <a href="index.html#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
+                <a href="index.html#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
+                <a href="vacancy.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
+                <a href="team.html" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2">Команда</a>
+                <a href="conacts.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Контакты</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="relative pt-32 pb-16 bg-black-900">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute top-20 left-10 w-64 h-64 bg-gold-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-gold-700/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb fade-in">
+                <a href="index.html">Главная</a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <span>Команда</span>
+            </div>
+
+            <div class="fade-in">
+                <p class="text-gold-500 font-medium tracking-[0.3em] mb-6 uppercase text-sm md:text-base">
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4"></span>
+                    Наши люди
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4"></span>
+                </p>
+                
+                <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Команда <span class="text-gold-gradient">Профессионалов</span>
+                </h1>
+                
+                <p class="text-gray-400 text-lg max-w-3xl">
+                    Познакомьтесь с опытными руководителями DirectLine. Каждый член нашей команды — эксперт в своей области, готовый помочь вашему бизнесу расти.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-24 bg-black-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">
+                    Опытные <span class="text-gold-gradient">руководители</span>
+                </h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1: Сергей Хуммедов -->
+                <div class="team-card rounded-sm fade-in">
+                    <div class="image-wrapper aspect-[4/5]">
+                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/1b8c72235-9cbb-4aaa-baf8-c4af2f0ad0d1.png" alt="Сергей Хуммедов" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-white mb-2">Сергей Хуммедов</h3>
+                        <p class="text-gold-500 text-sm uppercase tracking-widest mb-4">Коммерческий директор</p>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Опытный руководитель с многолетним стажем в маркетинге и продажах. Отвечает за стратегическое развитие компании и ключевые партнерства.
+                        </p>
+                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                            <a href="mailto:sergejhummedov@gmail.com" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="tel:+79603488411" class="social-link">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2: Надежда Чернецова -->
+                <div class="team-card rounded-sm fade-in" style="transition-delay: 100ms;">
+                    <div class="image-wrapper aspect-[4/5]">
+                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/18eacf3ff-d03d-4c18-838a-12e294309580.png" alt="Надежда Чернецова" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-white mb-2">Надежда Чернецова</h3>
+                        <p class="text-gold-500 text-sm uppercase tracking-widest mb-4">Руководитель Call-центра №1</p>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Специалист по организации работы call-центра. Обеспечивает высокое качество обработки клиентской базы и подготовку скриптов.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3: Евгений Покусаев -->
+                <div class="team-card rounded-sm fade-in" style="transition-delay: 200ms;">
+                    <div class="image-wrapper aspect-[4/5]">
+                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/14570a46a-6209-4246-be37-3164cbd7aacc.png" alt="Евгений Покусаев" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-white mb-2">Евгений Покусаев</h3>
+                        <p class="text-gold-500 text-sm uppercase tracking-widest mb-4">Руководитель Call-центра №2</p>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Эксперт в области телемаркетинга и обработки входящих звонков. Контролирует работу второй линии call-центра.
+                        </p>
+                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4: Злата Сорокина -->
+                <div class="team-card rounded-sm fade-in" style="transition-delay: 300ms;">
+                    <div class="image-wrapper aspect-[4/5]">
+                        <img src="https://static.tildacdn.com/tild3933-6366-4466-a239-373262323838/_.jpg" alt="Злата Сорокина" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-white mb-2">Злата Сорокина</h3>
+                        <p class="text-gold-500 text-sm uppercase tracking-widest mb-4">Руководитель отдела продаж</p>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Ведущий специалист по продажам. Отвечает за развитие отдела продаж, обучение менеджеров и достижение плановых показателей.
+                        </p>
+                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 5: Юлия Стеблева -->
+                <div class="team-card rounded-sm fade-in" style="transition-delay: 400ms;">
+                    <div class="image-wrapper aspect-[4/5]">
+                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/127ea588f-bc9d-47e4-aaec-2e8d456fc393.png" alt="Юлия Стеблева" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-white mb-2">Юлия Стеблева</h3>
+                        <p class="text-gold-500 text-sm uppercase tracking-widest mb-4">Руководитель отдела рекрутинга</p>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Профессионал в области подбора персонала. Обеспечивает компанию квалифицированными кадрами и развивает HR-процессы.
+                        </p>
+                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 6: Кристина Покусаева -->
+                <div class="team-card rounded-sm fade-in" style="transition-delay: 500ms;">
+                    <div class="image-wrapper aspect-[4/5]">
+                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/1356830b0-cc01-4c20-9073-f6a4ae946c8e.png" alt="Кристина Покусаева" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl text-white mb-2">Кристина Покусаева</h3>
+                        <p class="text-gold-500 text-sm uppercase tracking-widest mb-4">Руководитель отдела Авито</p>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Эксперт по продвижению на платформе Авито. Разрабатывает стратегии размещения и оптимизации рекламных кампаний.
+                        </p>
+                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-24 bg-black-850">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">
+                    Наши <span class="text-gold-gradient">ценности</span>
+                </h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-3xl text-gold-500"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-3">Прозрачность</h3>
+                    <p class="text-gray-400 text-sm">
+                        Мы открыто показываем как, где и в каких условиях работает наша команда
+                    </p>
+                </div>
+
+                <div class="text-center fade-in" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-ruble-sign text-3xl text-gold-500"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-3">Достойный заработок</h3>
+                    <p class="text-gray-400 text-sm">
+                        Компания ценит труд сотрудников и предлагает конкурентную оплату
+                    </p>
+                </div>
+
+                <div class="text-center fade-in" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-gold-500"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-3">Надежность</h3>
+                    <p class="text-gray-400 text-sm">
+                        DirectLine — стабильная компания с многолетним опытом работы
+                    </p>
+                </div>
+
+                <div class="text-center fade-in" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-3xl text-gold-500"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-3">Стабильность</h3>
+                    <p class="text-gray-400 text-sm">
+                        Гарантируем сотрудникам долгосрочную перспективу и предсказуемость
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="py-24 bg-black-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold-700/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 fade-in">
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">
+                Хотите стать частью <span class="text-gold-gradient">команды</span>?
+            </h2>
+            <p class="text-gray-400 mb-8">
+                Мы постоянно ищем талантливых специалистов. Если вы хотите работать в динамичной команде и развиваться в сфере маркетинга — мы ждем вас!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="vacancy.html" class="btn-gold inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <i class="fas fa-briefcase mr-2"></i>Смотреть вакансии
+                </a>
+                <a href="conacts.html" class="btn-outline inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <i class="fas fa-envelope mr-2"></i>Связаться с нами
+                </a>
+            </div>
+
+            <div class="mt-12 p-6 bg-gold-500/10 border border-gold-500/30 rounded-sm inline-block">
+                <p class="text-gold-500 font-medium mb-2">Следите за нами в Telegram</p>
+                <a href="https://t.me/directlain" target="_blank" class="text-white hover:text-gold-500 transition-colors">
+                    <i class="fab fa-telegram-plane mr-2"></i>@directlain
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black-950 border-t border-white/5 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <div>
+                            <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
+                            <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        Компания DirectLine работает только на результат. Ведь мы зарабатываем только тогда, когда зарабатывают наши клиенты!
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="https://t.me/business_Direct_Line" target="_blank" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://wa.me/79603488411" target="_blank" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:sergejhummedov@gmail.com" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:border-gold-500 hover:text-gold-500 transition-all">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Навигация</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
+                        <li><a href="index.html#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
+                        <li><a href="index.html#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
+                        <li><a href="vacancy.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
+                        <li><a href="team.html" class="text-gold-500 transition-colors text-sm">Команда</a></li>
+                        <li><a href="conacts.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Документы</h4>
+                    <ul class="space-y-3">
+                        <li><a href="polzovatelskoe-soglashenie.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Пользовательское соглашение</a></li>
+                        <li><a href="politika.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Политика конфиденциальности</a></li>
+                        <li><a href="index.html#faq" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Реквизиты</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><span class="text-gray-500">ИНН:</span> 2016007929</li>
+                        <li><span class="text-gray-500">КПП:</span> 201601001</li>
+                        <li><span class="text-gray-500">ОГРН:</span> 1242000003332</li>
+                        <li><span class="text-gray-500">Р/с:</span> 1242000003332</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-600 text-xs">
+                        © 2024 DirectLine. Все права защищены.
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="polzovatelskoe-soglashenie.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
+                        <a href="politika.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="scrollToTop()" class="back-to-top fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-black-900/95', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-black-900/95', 'shadow-lg');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Counter Animation for Stats
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.ceil(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Initialize counters when visible
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stats-card .font-bold');
+                    statNumbers.forEach(num => {
+                        const text = num.textContent;
+                        const value = parseInt(text.replace(/\D/g, ''));
+                        const suffix = text.replace(/[\d]/g, '');
+                        num.textContent = '0' + suffix;
+                        animateCounter(num, value, suffix);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-card');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
+

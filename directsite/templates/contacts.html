@@ -182,7 +182,8 @@
                         <h2 class="font-serif text-2xl text-white mb-2">Напишите нам</h2>
                         <p class="text-gray-400 mb-6">Заполните форму и мы свяжемся с вами в ближайшее время</p>
 
-                        <form id="contactForm" onsubmit="submitForm(event)">
+                        <form id="contactForm" method="post" action="{% url 'contacts' %}">
+                            {% csrf_token %}
                             <div class="space-y-4">
                                 <div>
                                     <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Ваше имя</label>

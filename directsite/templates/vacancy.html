@@ -728,7 +728,8 @@
             </div>
 
             <div class="bg-black-800 border border-white/10 p-8 rounded-sm fade-in">
-                <form id="vacancyForm" onsubmit="submitForm(event)">
+                <form id="vacancyForm" method="post" action="{% url 'vacancy' %}">
+                    {% csrf_token %}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Ваше имя</label>

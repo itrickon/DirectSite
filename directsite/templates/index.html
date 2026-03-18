@@ -666,7 +666,8 @@
                     </div>
                 </div>
 
-                <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
+                <form id="contactForm" method="post" action="{% url 'index' %}">
+                    {% csrf_token %}
                     <!-- Step 1 -->
                     <div class="step" id="step1">
                         <div class="text-center mb-8">
@@ -705,11 +706,11 @@
                         <p class="text-gray-400 text-center mb-6">Какая услуга вас интересует?</p>
                         <div class="space-y-3 mb-6">
                             <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
-                                <input type="checkbox" name="service" value="leadgen" class="checkbox-custom">
+                                <input type="checkbox" name="service" value="lead_generation" class="checkbox-custom">
                                 <span class="text-white">Лидогенерация</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
-                                <input type="checkbox" name="service" value="callcenter" class="checkbox-custom">
+                                <input type="checkbox" name="service" value="call_center" class="checkbox-custom">
                                 <span class="text-white">Call-центр</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
@@ -721,7 +722,7 @@
                                 <span class="text-white">Рекрутинг</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 bg-black-700 border border-white/10 rounded-sm cursor-pointer hover:border-gold-500 transition-colors">
-                                <input type="checkbox" name="service" value="leadcode" class="checkbox-custom">
+                                <input type="checkbox" name="service" value="lead_code" class="checkbox-custom">
                                 <span class="text-white">Лид-КОД</span>
                             </label>
                         </div>

@@ -114,39 +114,136 @@ function initSmoothScroll() {
     });
 }
 
+// CSRF TOKEN
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 // ФОРМА ОБРАТНОЙ СВЯЗИ
 
 function initContactForm() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
+    const forms = document.querySelectorAll('#contactForm, #vacancyForm');
     
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Здесь будет логика отправки формы
-        console.log('Form submitted');
-        
-        // Показываем сообщение об успехе
-        const successMessage = document.getElementById('successMessage');
-        if (successMessage) {
-            form.style.display = 'none';
-            successMessage.classList.add('show');
-        }
+    forms.forEach(form => {
+        if (!form) return;
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.innerHTML : '';
+            
+            // Блокируем кнопку
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+            }
+
+            const formData = new FormData(form);
+            const csrftoken = getCookie('csrftoken');
+
+            try {
+                const response = await fetch(window.location.href, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Показываем сообщение об успехе
+                    showNotification(data.message, 'success');
+                    form.reset();
+                    
+                    // Если есть шаг успеха (для multi-step формы)
+                    const successStep = document.getElementById('successStep');
+                    if (successStep) {
+                        document.querySelectorAll('.step').forEach(step => step.classList.add('hidden'));
+                        successStep.classList.remove('hidden');
+                    }
+                } else {
+                    showNotification('Ошибка при отправке. Проверьте правильность заполнения полей.', 'error');
+                    if (data.errors) {
+                        Object.keys(data.errors).forEach(field => {
+                            const fieldElement = form.querySelector(`[name="${field}"]`);
+                            if (fieldElement) {
+                                fieldElement.classList.add('border-red-500');
+                            }
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('Произошла ошибка. Попробуйте позже.', 'error');
+            } finally {
+                // Разблокируем кнопку
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+            }
+        });
     });
 }
 
+// Уведомления
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `fixed top-24 right-6 z-50 px-6 py-4 rounded-sm shadow-lg transform transition-all duration-300 translate-x-full ${
+        type === 'success' ? 'bg-green-600' : 'bg-red-600'
+    } text-white`;
+    notification.innerHTML = `
+        <div class="flex items-center gap-3">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Анимация появления
+    setTimeout(() => {
+        notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Удаление через 5 секунд
+    setTimeout(() => {
+        notification.classList.add('translate-x-full');
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
+
 function resetForm() {
-    const form = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
+    const forms = document.querySelectorAll('#contactForm, #vacancyForm');
     
-    if (form) {
-        form.reset();
-        form.style.display = 'block';
-    }
-    
-    if (successMessage) {
-        successMessage.classList.remove('show');
-    }
+    forms.forEach(form => {
+        if (form) {
+            form.reset();
+            // Сброс multi-step формы
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.add('hidden');
+            });
+            const step1 = document.getElementById('step1');
+            if (step1) {
+                step1.classList.remove('hidden');
+            }
+        }
+    });
 }
 
 // КАЛЬКУЛЯТОР

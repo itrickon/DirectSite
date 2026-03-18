@@ -65,43 +65,45 @@ function submitForm() {
 // АНИМАЦИЯ ЧИСЕЛ
 
 function animateCounter(element, target, suffix = '') {
-    let current = 0;
-    const increment = target / 50;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target + suffix;
-            clearInterval(timer);
+    const duration = 1000; // 1 секунда
+    const startTime = performance.now();
+    
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (ease-out)
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(target * easeProgress);
+        
+        element.textContent = current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
         } else {
-            element.textContent = Math.ceil(current) + suffix;
+            element.textContent = target + suffix;
         }
-    }, 30);
+    }
+    
+    requestAnimationFrame(animate);
 }
 
 // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
- 
-document.addEventListener('DOMContentLoaded', function() {
-    // Counter Animation for stats
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(num => {
-                    const text = num.textContent;
-                    const value = parseInt(text.replace(/\D/g, ''));
-                    const suffix = text.replace(/[\d]/g, '');
-                    num.textContent = '0' + suffix;
-                    animateCounter(num, value, suffix);
-                });
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
 
-    const statsSection = document.querySelector('#hero .grid');
-    if (statsSection) {
-        counterObserver.observe(statsSection);
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    // Counter Animation for stats - запускаем сразу для всех элементов
+    const statNumbers = document.querySelectorAll('.stat-number');
     
+    statNumbers.forEach(num => {
+        const value = parseInt(num.getAttribute('data-value') || num.textContent.replace(/\D/g, ''), 10);
+        const suffix = num.getAttribute('data-suffix') || num.textContent.replace(/[\d]/g, '').trim();
+        // Устанавливаем начальное значение
+        num.textContent = '0' + suffix;
+        // Запускаем анимацию с небольшой задержкой для каждого элемента
+        setTimeout(() => {
+            animateCounter(num, value, suffix);
+        }, parseInt(num.getAttribute('data-delay') || '0', 10));
+    });
+
     console.log('DirectLine index.js: Скрипты инициализированы');
 });

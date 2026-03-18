@@ -392,36 +392,45 @@ function initTabs() {
 
 // АНИМАЦИЯ ЧИСЕЛ
 
-function animateNumber(element, target, duration = 2000) {
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = start;
+function animateNumber(element, target, suffix = '', duration = 1000) {
+    const startTime = performance.now();
     
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target.toLocaleString('ru-RU');
-            clearInterval(timer);
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (ease-out)
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(target * easeProgress);
+        
+        element.textContent = current.toLocaleString('ru-RU') + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
         } else {
-            element.textContent = Math.floor(current).toLocaleString('ru-RU');
+            element.textContent = target.toLocaleString('ru-RU') + suffix;
         }
-    }, 16);
+    }
+    
+    requestAnimationFrame(animate);
 }
 
 function initStatsAnimation() {
     const statNumbers = document.querySelectorAll('.stat-number');
     if (statNumbers.length === 0) return;
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const target = parseInt(entry.target.textContent.replace(/\D/g, ''));
-                animateNumber(entry.target, target);
+                const text = entry.target.textContent.trim();
+                const target = parseInt(text.replace(/\D/g, ''), 10);
+                const suffix = text.replace(/[\d]/g, '').trim();
+                animateNumber(entry.target, target, suffix);
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
-    
+
     statNumbers.forEach(stat => observer.observe(stat));
 }
  

@@ -606,6 +606,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
     border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
+/* Stat Number - для цифр статистики */
+.stat-number {
+    font-family: 'Inter', 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+    font-feature-settings: "liga" 0;
+}
+
 /* Testimonial Card */
 .testimonial-card {
     background: linear-gradient(145deg, rgba(10, 10, 10, 0.8), rgba(18, 18, 18, 0.8));

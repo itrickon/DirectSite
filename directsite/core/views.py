@@ -86,6 +86,9 @@ def calculator(request):
     """Страница калькулятора"""
     return render(request, 'calculator.html')
 
+def team(request):
+    """Страница калькулятора"""
+    return render(request, 'team.html')
 
 def privacy_policy(request):
     """Политика конфиденциальности"""

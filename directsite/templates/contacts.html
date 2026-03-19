@@ -306,12 +306,6 @@
                             <a href="https://t.me/directlain" target="_blank" class="social-link" title="Telegram канал">
                                 <i class="fas fa-bullhorn text-xl"></i>
                             </a>
-                            <a href="https://wa.me/79603488411" target="_blank" class="social-link" title="WhatsApp">
-                                <i class="fab fa-whatsapp text-xl"></i>
-                            </a>
-                            <a href="mailto:sergejhummedov@gmail.com" class="social-link" title="Email">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -404,13 +398,6 @@
                             <span class="text-white">г. Саратов</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="mt-8 pt-8 border-t border-white/10 text-center">
-                    <p class="text-gray-500 text-sm">
-                        <i class="fas fa-info-circle text-gold-500 mr-2"></i>
-                        Вся информация актуальна на <span id="currentDate"></span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -526,6 +513,37 @@
     <button onclick="scrollToTop()" class="back-to-top bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#' && targetId !== '#apply') {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 
     <!-- Main JavaScript -->
     <script src="{% static 'js/main.js' %}"></script>

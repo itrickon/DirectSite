@@ -215,9 +215,9 @@
                             <i class="fas fa-calendar text-gold-500"></i>
                             <span>Сб-Вс выходные</span>
                         </div>
-                        <button onclick="openModal('Оператор Call-центра')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -253,9 +253,9 @@
                             <i class="fas fa-ruble-sign text-gold-500"></i>
                             <span>Средняя ЗП от 50 000 ₽</span>
                         </div>
-                        <button onclick="openModal('Менеджер по продажам')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -291,9 +291,9 @@
                             <i class="fas fa-graduation-cap text-gold-500"></i>
                             <span>Обучение предоставляется</span>
                         </div>
-                        <button onclick="openModal('Авитолог')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -329,9 +329,9 @@
                             <i class="fas fa-map-marker-alt text-gold-500"></i>
                             <span>Офис: ул. Астраханская, 87в</span>
                         </div>
-                        <button onclick="openModal('Сборщик информации')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -367,9 +367,9 @@
                             <i class="fas fa-gift text-gold-500"></i>
                             <span>Оклад + премия</span>
                         </div>
-                        <button onclick="openModal('HR-менеджер')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -405,9 +405,9 @@
                             <i class="fas fa-chart-line text-gold-500"></i>
                             <span>Карьерный рост</span>
                         </div>
-                        <button onclick="openModal('Руководитель отдела продаж')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -580,42 +580,6 @@
     <button onclick="scrollToTop()" class="back-to-top bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
-
-    <!-- Application Modal -->
-    <div id="applyModal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
-        <div class="modal-content bg-black-800 border border-gold-500/30 w-full max-w-lg p-8 relative shadow-2xl shadow-gold-500/10">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            
-            <h3 class="font-serif text-2xl text-white mb-2">Отклик на вакансию</h3>
-            <p class="text-gold-500 text-sm mb-6" id="modalPositionTitle">Позиция</p>
-            
-            <form onsubmit="event.preventDefault(); submitModalForm();">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-gray-400 text-xs uppercase tracking-widest mb-1">Ваше Имя</label>
-                        <input type="text" required class="w-full form-input px-4 py-3 text-white rounded-sm">
-                    </div>
-                    <div>
-                        <label class="block text-gray-400 text-xs uppercase tracking-widest mb-1">Телефон</label>
-                        <input type="tel" required class="w-full form-input px-4 py-3 text-white rounded-sm">
-                    </div>
-                    <div>
-                        <label class="block text-gray-400 text-xs uppercase tracking-widest mb-1">Email</label>
-                        <input type="email" class="w-full form-input px-4 py-3 text-white rounded-sm">
-                    </div>
-                    <div>
-                        <label class="block text-gray-400 text-xs uppercase tracking-widest mb-1">Опыт работы</label>
-                        <textarea rows="3" class="w-full form-input px-4 py-3 text-white rounded-sm"></textarea>
-                    </div>
-                    <button type="submit" class="w-full btn-gold py-4 text-sm font-bold uppercase tracking-widest rounded-sm mt-4">
-                        Отправить отклик
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- Main JavaScript -->
     <script src="{% static 'js/main.js' %}"></script>

@@ -61,6 +61,18 @@ body {
     background: linear-gradient(180deg, #F9F1D8, #D4AF37);
 }
 
+/*ВЫДЕЛЕНИЕ ТЕКСТА*/
+
+::selection {
+    background: #D4AF37;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #D4AF37;
+    color: #000;
+}
+
 /*АНИМАЦИИ FADE-IN*/
 
 .fade-in {

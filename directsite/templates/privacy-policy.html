@@ -37,9 +37,8 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-black-900/90 backdrop-blur-md"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="{% url 'index' %}" class="flex items-center gap-3">
@@ -512,8 +511,13 @@
         </div>
     </footer>
 
+    <!-- Floating Action Button -->
+    <a href="#contact" class="floating-contact-btn bg-gold-500 hover:bg-gold-400 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110" id="floatingContactBtn" style="position: fixed; bottom: 24px; right: 20px; z-index: 99;">
+        <i class="fas fa-comment-dots text-2xl"></i>
+    </a>
+
     <!-- Back to Top Button -->
-    <button onclick="scrollToTop()" class="back-to-top fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+    <button onclick="scrollToTop()" class="back-to-top bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
@@ -521,3 +525,4 @@
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
+

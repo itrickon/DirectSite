@@ -93,7 +93,7 @@ function animateCounter(element, target, suffix = '') {
 document.addEventListener('DOMContentLoaded', function() {
     // Counter Animation for stats - запускаем сразу для всех элементов
     const statNumbers = document.querySelectorAll('.stat-number');
-    
+
     statNumbers.forEach(num => {
         const value = parseInt(num.getAttribute('data-value') || num.textContent.replace(/\D/g, ''), 10);
         const suffix = num.getAttribute('data-suffix') || num.textContent.replace(/[\d]/g, '').trim();
@@ -104,6 +104,26 @@ document.addEventListener('DOMContentLoaded', function() {
             animateCounter(num, value, suffix);
         }, parseInt(num.getAttribute('data-delay') || '0', 10));
     });
+
+    // Фиксация позиции Floating Action Button на мобильных
+    const floatingBtn = document.getElementById('floatingContactBtn') || document.querySelector('.floating-contact-btn');
+    if (floatingBtn) {
+        // Принудительно устанавливаем стили после загрузки
+        floatingBtn.style.setProperty('position', 'fixed', 'important');
+        floatingBtn.style.setProperty('bottom', '24px', 'important');
+        floatingBtn.style.setProperty('right', '20px', 'important');
+        floatingBtn.style.setProperty('z-index', '99', 'important');
+        
+        // Исправляем позицию при изменении размера окна
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                floatingBtn.style.setProperty('bottom', '24px', 'important');
+                floatingBtn.style.setProperty('right', '20px', 'important');
+            }, 100);
+        });
+    }
 
     console.log('DirectLine index.js: Скрипты инициализированы');
 });

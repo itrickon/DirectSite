@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,320 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            50: '#FEF9E7',
-                            100: '#F9F1D8',
-                            200: '#F2E3B5',
-                            300: '#EEDC9A',
-                            400: '#D4AF37',
-                            500: '#C5A028',
-                            600: '#AA8C2C',
-                            700: '#886F23',
-                            800: '#6B571B',
-                            900: '#4D3F14',
-                        },
-                        black: {
-                            950: '#020202',
-                            900: '#050505',
-                            850: '#080808',
-                            800: '#0A0A0A',
-                            750: '#0D0D0D',
-                            700: '#121212',
-                            650: '#1A1A1A',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shine': 'shine 4s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        shine: {
-                            'to': { backgroundPosition: '200% center' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-        body {
-            background-color: #050505;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .text-gold-gradient {
-            background: linear-gradient(to right, #D4AF37, #F9F1D8, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: shine 4s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0A0A0A;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #D4AF37, #AA8C2C);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #F9F1D8, #D4AF37);
-        }
-
-        /* Fade In Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Button Styles */
-        .btn-gold {
-            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
-            color: #000;
-            transition: all 0.3s ease;
-        }
-
-        .btn-gold:hover {
-            background: linear-gradient(135deg, #F9F1D8 0%, #D4AF37 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-outline {
-            border: 2px solid #D4AF37;
-            color: #D4AF37;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline:hover {
-            background: #D4AF37;
-            color: #000;
-            transform: translateY(-3px);
-        }
-
-        /* Team Card */
-        .team-card {
-            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(18, 18, 18, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s ease;
-            overflow: hidden;
-        }
-
-        .team-card:hover {
-            border-color: #D4AF37;
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
-        }
-
-        .team-card .image-wrapper {
-            overflow: hidden;
-        }
-
-        .team-card img {
-            transition: transform 0.6s ease;
-        }
-
-        .team-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .team-card .social-links {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-        }
-
-        .team-card:hover .social-links {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Navigation */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #D4AF37;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s ease;
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        /* Back to Top */
-        .back-to-top {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Preloader */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #050505;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(212, 175, 55, 0.2);
-            border-top-color: #D4AF37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6B7280;
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-        }
-
-        .breadcrumb a {
-            color: #6B7280;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb a:hover {
-            color: #D4AF37;
-        }
-
-        .breadcrumb span {
-            color: #D4AF37;
-        }
-
-        /* Stats Counter */
-        .stats-card {
-            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(170, 140, 44, 0.05));
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        /* Social Link */
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9CA3AF;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            border-color: #D4AF37;
-            color: #D4AF37;
-            transform: translateY(-3px);
-        }
-    </style>
+    <!-- Tailwind Config -->
+    <script src="{% static 'js/tailwind-config.js' %}"></script>
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-black">
 
@@ -336,9 +29,8 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-black-900/90 backdrop-blur-md"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="index.html" class="flex items-center gap-3">
@@ -721,8 +413,13 @@
         </div>
     </footer>
 
+    <!-- Floating Action Button -->
+    <a href="#contact" class="floating-contact-btn bg-gold-500 hover:bg-gold-400 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110" id="floatingContactBtn" style="position: fixed; bottom: 24px; right: 20px; z-index: 99;">
+        <i class="fas fa-comment-dots text-2xl"></i>
+    </a>
+
     <!-- Back to Top Button -->
-    <button onclick="scrollToTop()" class="back-to-top fixed bottom-6 right-6 z-50 bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
+    <button onclick="scrollToTop()" class="back-to-top bg-gold-500 hover:bg-gold-700 text-black w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all transform hover:scale-110">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
@@ -739,24 +436,6 @@
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
         }
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const backToTop = document.querySelector('.back-to-top');
-            
-            if (window.scrollY > 100) {
-                navbar.classList.add('bg-black-900/95', 'shadow-lg');
-            } else {
-                navbar.classList.remove('bg-black-900/95', 'shadow-lg');
-            }
-
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
 
         // Scroll to Top
         function scrollToTop() {
@@ -824,6 +503,10 @@
             counterObserver.observe(statsSection);
         }
     </script>
+
+    <!-- Main JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
+
 

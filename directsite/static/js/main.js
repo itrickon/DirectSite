@@ -446,11 +446,31 @@ document.addEventListener('DOMContentLoaded', function() {
     initAccordion();
     initTabs();
     initStatsAnimation();
-    
+
     // Инициализация калькулятора если он есть на странице
     if (document.getElementById('profitCalculator')) {
         initCalculator();
     }
-    
+
+    // Фиксация позиции Floating Action Button на мобильных
+    const floatingBtn = document.getElementById('floatingContactBtn') || document.querySelector('.floating-contact-btn');
+    if (floatingBtn) {
+        // Принудительно устанавливаем стили после загрузки
+        floatingBtn.style.setProperty('position', 'fixed', 'important');
+        floatingBtn.style.setProperty('bottom', '24px', 'important');
+        floatingBtn.style.setProperty('right', '20px', 'important');
+        floatingBtn.style.setProperty('z-index', '99', 'important');
+        
+        // Исправляем позицию при изменении размера окна
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                floatingBtn.style.setProperty('bottom', '24px', 'important');
+                floatingBtn.style.setProperty('right', '20px', 'important');
+            }, 100);
+        });
+    }
+
     console.log('DirectLine: Все скрипты инициализированы');
 });

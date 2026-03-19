@@ -172,12 +172,12 @@ body {
 /*МОБИЛЬНОЕ МЕНЮ*/
 
 .mobile-menu {
-    transform: translateX(100%);
+    transform: translateX(100%) !important;
     transition: transform 0.4s ease;
 }
 
 .mobile-menu.active {
-    transform: translateX(0);
+    transform: translateX(0) !important;
 }
 
 /*КНОПКА НАВЕРХ*/
@@ -187,7 +187,7 @@ body {
     top: auto !important;
     bottom: 90px !important;
     right: 20px !important;
-    z-index: 99 !important;
+    z-index: 98 !important;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -207,10 +207,25 @@ body {
 
 @media (max-width: 768px) {
     .back-to-top {
-        bottom: 10vh !important;
-        right: 4vw !important;
-        width: 52px;
-        height: 52px;
+        bottom: 90px !important;
+        right: 20px !important;
+        width: 56px !important;
+        height: 56px !important;
+    }
+}
+
+/* Floating Action Button - фиксированное позиционирование */
+a.floating-contact-btn {
+    position: fixed !important;
+    bottom: 24px !important;
+    right: 20px !important;
+    z-index: 99 !important;
+}
+
+@media (max-width: 768px) {
+    a.floating-contact-btn {
+        bottom: 24px !important;
+        right: 20px !important;
     }
 }
 

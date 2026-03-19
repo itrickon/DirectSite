@@ -33,7 +33,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center gap-3">
+                    <a href="{% url 'index' %}" class="flex items-center gap-3">
                         <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
@@ -43,12 +43,12 @@
                 </div>
 
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
-                    <a href="index.html#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
-                    <a href="index.html#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
-                    <a href="index.html#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
-                    <a href="vacancy.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
-                    <a href="conacts.html" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Контакты</a>
+                    <a href="{% url 'index' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
+                    <a href="{% url 'index' %}#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="{% url 'index' %}#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
+                    <a href="{% url 'index' %}#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
+                    <a href="{% url 'vacancy' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
+                    <a href="{% url 'contacts' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Контакты</a>
                 </div>
 
                 <button class="lg:hidden text-white p-2" onclick="toggleMobileMenu()">
@@ -68,12 +68,12 @@
                 </button>
             </div>
             <nav class="space-y-4">
-                <a href="index.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
-                <a href="index.html#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
-                <a href="index.html#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
-                <a href="index.html#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
-                <a href="vacancy.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
-                <a href="conacts.html" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Контакты</a>
+                <a href="{% url 'index' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
+                <a href="{% url 'index' %}#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
+                <a href="{% url 'index' %}#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
+                <a href="{% url 'index' %}#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
+                <a href="{% url 'vacancy' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
+                <a href="{% url 'contacts' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Контакты</a>
             </nav>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Breadcrumb -->
             <div class="breadcrumb fade-in">
-                <a href="index.html">Главная</a>
+                <a href="{% url 'index' %}">Главная</a>
                 <i class="fas fa-chevron-right text-xs"></i>
                 <span>Команда</span>
             </div>
@@ -125,7 +125,7 @@
                 <!-- Team Member 1: Сергей Хуммедов -->
                 <div class="team-card rounded-sm fade-in">
                     <div class="image-wrapper aspect-[4/5]">
-                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/1b8c72235-9cbb-4aaa-baf8-c4af2f0ad0d1.png" alt="Сергей Хуммедов" class="w-full h-full object-cover">
+                        <img src="{% static 'images/team_image/Sergey_Hummedov.png' %}" alt="Сергей Хуммедов" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="font-serif text-xl text-white mb-2">Сергей Хуммедов</h3>
@@ -133,24 +133,13 @@
                         <p class="text-gray-400 text-sm mb-4">
                             Опытный руководитель с многолетним стажем в маркетинге и продажах. Отвечает за стратегическое развитие компании и ключевые партнерства.
                         </p>
-                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
-                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="mailto:sergejhummedov@gmail.com" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="tel:+79603488411" class="social-link">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Team Member 2: Надежда Чернецова -->
                 <div class="team-card rounded-sm fade-in" style="transition-delay: 100ms;">
                     <div class="image-wrapper aspect-[4/5]">
-                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/18eacf3ff-d03d-4c18-838a-12e294309580.png" alt="Надежда Чернецова" class="w-full h-full object-cover">
+                        <img src="{% static 'images/team_image/Nadezhda_Chernetsova.jpg' %}" alt="Надежда Чернецова" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="font-serif text-xl text-white mb-2">Надежда Чернецова</h3>
@@ -164,7 +153,7 @@
                 <!-- Team Member 3: Евгений Покусаев -->
                 <div class="team-card rounded-sm fade-in" style="transition-delay: 200ms;">
                     <div class="image-wrapper aspect-[4/5]">
-                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/14570a46a-6209-4246-be37-3164cbd7aacc.png" alt="Евгений Покусаев" class="w-full h-full object-cover">
+                        <img src="{% static 'images/team_image/Evgeny_Pokusaev.jpg' %}" alt="Евгений Покусаев" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="font-serif text-xl text-white mb-2">Евгений Покусаев</h3>
@@ -172,21 +161,13 @@
                         <p class="text-gray-400 text-sm mb-4">
                             Эксперт в области телемаркетинга и обработки входящих звонков. Контролирует работу второй линии call-центра.
                         </p>
-                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
-                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Team Member 4: Злата Сорокина -->
                 <div class="team-card rounded-sm fade-in" style="transition-delay: 300ms;">
                     <div class="image-wrapper aspect-[4/5]">
-                        <img src="https://static.tildacdn.com/tild3933-6366-4466-a239-373262323838/_.jpg" alt="Злата Сорокина" class="w-full h-full object-cover">
+                        <img src="{% static 'images/team_image/Zlata_Sorokina.jpg' %}" alt="Злата Сорокина" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="font-serif text-xl text-white mb-2">Злата Сорокина</h3>
@@ -194,21 +175,13 @@
                         <p class="text-gray-400 text-sm mb-4">
                             Ведущий специалист по продажам. Отвечает за развитие отдела продаж, обучение менеджеров и достижение плановых показателей.
                         </p>
-                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
-                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Team Member 5: Юлия Стеблева -->
                 <div class="team-card rounded-sm fade-in" style="transition-delay: 400ms;">
                     <div class="image-wrapper aspect-[4/5]">
-                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/127ea588f-bc9d-47e4-aaec-2e8d456fc393.png" alt="Юлия Стеблева" class="w-full h-full object-cover">
+                        <img src="{% static 'images/team_image/Julia_Stebleva.png' %}" alt="Юлия Стеблева" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="font-serif text-xl text-white mb-2">Юлия Стеблева</h3>
@@ -216,21 +189,13 @@
                         <p class="text-gray-400 text-sm mb-4">
                             Профессионал в области подбора персонала. Обеспечивает компанию квалифицированными кадрами и развивает HR-процессы.
                         </p>
-                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
-                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Team Member 6: Кристина Покусаева -->
                 <div class="team-card rounded-sm fade-in" style="transition-delay: 500ms;">
                     <div class="image-wrapper aspect-[4/5]">
-                        <img src="https://image.qwenlm.ai/public_source/ca799342-2e26-4d7c-b965-2f47a7b1a7be/1356830b0-cc01-4c20-9073-f6a4ae946c8e.png" alt="Кристина Покусаева" class="w-full h-full object-cover">
+                        <img src="{% static 'images/team_image/Kristina_Pokusaeva.png' %}" alt="Кристина Покусаева" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="font-serif text-xl text-white mb-2">Кристина Покусаева</h3>
@@ -238,14 +203,6 @@
                         <p class="text-gray-400 text-sm mb-4">
                             Эксперт по продвижению на платформе Авито. Разрабатывает стратегии размещения и оптимизации рекламных кампаний.
                         </p>
-                        <div class="social-links flex gap-3 pt-4 border-t border-white/10">
-                            <a href="https://t.me/business_Direct_Line" target="_blank" class="social-link">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="mailto:info@direct-line-sar.ru" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -320,10 +277,10 @@
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="vacancy.html" class="btn-gold inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                <a href="{% url 'vacancy' %}" class="btn-gold inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
                     <i class="fas fa-briefcase mr-2"></i>Смотреть вакансии
                 </a>
-                <a href="conacts.html" class="btn-outline inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
+                <a href="{% url 'contacts' %}" class="btn-outline inline-block px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
                     <i class="fas fa-envelope mr-2"></i>Связаться с нами
                 </a>
             </div>
@@ -368,23 +325,23 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Навигация</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
-                        <li><a href="index.html#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
-                        <li><a href="index.html#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
-                        <li><a href="index.html#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
-                        <li><a href="vacancy.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
-                        <li><a href="team.html" class="text-gold-500 transition-colors text-sm">Команда</a></li>
-                        <li><a href="conacts.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
+                        <li><a href="{% url 'index' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Главная</a></li>
+                        <li><a href="{% url 'index' %}#services" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Услуги</a></li>
+                        <li><a href="{% url 'index' %}#cases" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Кейсы</a></li>
+                        <li><a href="{% url 'index' %}#reviews" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Отзывы</a></li>
+                        <li><a href="{% url 'vacancy' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Вакансии</a></li>
+                        <li><a href="{% url 'team' %}" class="text-gold-500 transition-colors text-sm">Команда</a></li>
+                        <li><a href="{% url 'contacts' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Контакты</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Документы</h4>
                     <ul class="space-y-3">
-                        <li><a href="polzovatelskoe-soglashenie.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Пользовательское соглашение</a></li>
-                        <li><a href="politika.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Политика конфиденциальности</a></li>
-                        <li><a href="team.html" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Команда</a></li>
-                        <li><a href="index.html#faq" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">FAQ</a></li>
+                        <li><a href="{% url 'user_agreement' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Пользовательское соглашение</a></li>
+                        <li><a href="{% url 'privacy_policy' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Политика конфиденциальности</a></li>
+                        <li><a href="{% url 'team' %}" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">Команда</a></li>
+                        <li><a href="{% url 'index' %}#faq" class="text-gray-400 hover:text-gold-500 transition-colors text-sm">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -405,8 +362,8 @@
                         © 2026 DirectLine. Все права защищены.
                     </p>
                     <div class="flex gap-6">
-                        <a href="polzovatelskoe-soglashenie.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
-                        <a href="politika.html" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
+                        <a href="{% url 'user_agreement' %}" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Пользовательское соглашение</a>
+                        <a href="{% url 'privacy_policy' %}" class="text-gray-600 hover:text-gold-500 text-xs transition-colors">Политика конфиденциальности</a>
                     </div>
                 </div>
             </div>
@@ -435,11 +392,6 @@
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
-        }
-
-        // Scroll to Top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Scroll Animation Observer

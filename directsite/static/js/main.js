@@ -72,24 +72,43 @@ function initScrollAnimations() {
 
 // КНОПКА НАВЕРХ
 
+// Глобальная функция для scrollToTop с ручной анимацией
+window.scrollToTop = function() {
+    console.log('scrollToTop вызвана');
+    const start = window.pageYOffset || document.documentElement.scrollTop;
+    const duration = 800; // 800ms
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (easeInOutQuad)
+        const ease = progress < 0.5 
+            ? 2 * progress * progress 
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+        const current = start * (1 - ease);
+        window.scrollTo(0, current);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        }
+    }
+    
+    requestAnimationFrame(animate);
+};
+
 function initBackToTop() {
     const backToTop = document.querySelector('.back-to-top');
     if (!backToTop) return;
-    
+
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
         }
-    });
-    
-    backToTop.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     });
 }
 

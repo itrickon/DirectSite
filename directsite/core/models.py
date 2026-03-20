@@ -40,18 +40,10 @@ class Lead(models.Model):
 
 class VacancyApplication(models.Model):
     """Отклик на вакансию"""
-    POSITION_CHOICES = [
-        ('manager', 'Менеджер по продажам'),
-        ('call_operator', 'Оператор call-центра'),
-        ('recruiter', 'Рекрутер'),
-        ('info_collector', 'Сборщик информации'),
-        ('other', 'Другое'),
-    ]
-
     name = models.CharField("Имя", max_length=100)
     phone = models.CharField("Телефон", max_length=20)
     email = models.EmailField("Email", blank=True, null=True)
-    position = models.CharField("Должность", max_length=50, choices=POSITION_CHOICES)
+    position = models.CharField("Должность", max_length=100)
     experience = models.TextField("Опыт работы", blank=True)
     created_at = models.DateTimeField("Дата создания", auto_now_add=True)
 

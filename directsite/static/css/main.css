@@ -250,6 +250,11 @@ a.floating-contact-btn {
     visibility: hidden;
 }
 
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
 .loader {
     width: 60px;
     height: 60px;

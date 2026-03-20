@@ -151,7 +151,7 @@
                 </div>
 
                 <!-- Service 2: Call Center -->
-                <div class="service-card p-8 rounded-sm fade-in flex flex-col" style="transition-delay: 100ms;">
+                <div class="service-card p-8 rounded-sm fade-in flex flex-col">
                     <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-headset text-2xl text-gold-500"></i>
                     </div>
@@ -169,7 +169,7 @@
                 </div>
 
                 <!-- Service 3: Avito -->
-                <div class="service-card p-8 rounded-sm fade-in flex flex-col" style="transition-delay: 200ms;">
+                <div class="service-card p-8 rounded-sm fade-in flex flex-col">
                     <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-store text-2xl text-gold-500"></i>
                     </div>
@@ -187,7 +187,7 @@
                 </div>
 
                 <!-- Service 4: Recruiting -->
-                <div class="service-card p-8 rounded-sm fade-in flex flex-col" style="transition-delay: 300ms;">
+                <div class="service-card p-8 rounded-sm fade-in flex flex-col">
                     <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-users text-2xl text-gold-500"></i>
                     </div>
@@ -205,7 +205,7 @@
                 </div>
 
                 <!-- Service 5: Lead Code -->
-                <div class="service-card p-8 rounded-sm fade-in flex flex-col" style="transition-delay: 400ms;">
+                <div class="service-card p-8 rounded-sm fade-in flex flex-col">
                     <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-code text-2xl text-gold-500"></i>
                     </div>
@@ -223,7 +223,7 @@
                 </div>
 
                 <!-- Service 6: Complex -->
-                <div class="service-card p-8 rounded-sm fade-in flex flex-col" style="transition-delay: 500ms;">
+                <div class="service-card p-8 rounded-sm fade-in flex flex-col">
                     <div class="icon-wrapper w-16 h-16 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-layer-group text-2xl text-gold-500"></i>
                     </div>
@@ -254,6 +254,18 @@
                 <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
             </div>
 
+            <!-- Tabs -->
+            <div class="flex justify-center mb-12 fade-in">
+                <div class="inline-flex bg-black-800 border-white/10 rounded-sm p-1">
+                    <button class="tab-btn px-6 py-2 text-sm font-bold uppercase tracking-widest rounded-sm transition-all active" data-tab="standalone">
+                        Лидогенерация
+                    </button>
+                    <button class="tab-btn px-6 py-2 text-sm font-bold uppercase tracking-widest rounded-sm transition-all" data-tab="withcall">
+                        Лидогенерация + Call-центр
+                    </button>
+                </div>
+            </div>
+
             <!-- Standalone Pricing -->
             <div class="pricing-tabs" id="standalone">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -267,12 +279,12 @@
                             <li>Анализ сайтов</li>
                             <li>Связь с координатором</li>
                         </ul>
-                        <button onclick="openModal('Лидогенерация - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <button onclick="scrollToContactForm('Лидогенерация - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                             Заказать
                         </button>
                     </div>
 
-                    <div class="pricing-card featured p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                    <div class="pricing-card featured p-8 rounded-sm fade-in">
                         <h3 class="font-serif text-2xl text-white mb-2">Пилот</h3>
                         <div class="text-4xl font-bold text-gold-500 mb-2">98 000 ₽</div>
                         <p class="text-gray-400 text-sm mb-6">1000 определений потенциальных клиентов</p>
@@ -282,12 +294,12 @@
                             <li>Анализ сайтов</li>
                             <li>Связь с координатором</li>
                         </ul>
-                        <button onclick="openModal('Лидогенерация - Пилот')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <button onclick="scrollToContactForm('Лидогенерация - Пилот')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                             Заказать
                         </button>
                     </div>
 
-                    <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                    <div class="pricing-card p-8 rounded-sm fade-in">
                         <h3 class="font-serif text-2xl text-white mb-2">Стандарт</h3>
                         <div class="text-4xl font-bold text-gold-500 mb-2">267 300 ₽</div>
                         <p class="text-gray-400 text-sm mb-6">3000 определений потенциальных клиентов</p>
@@ -297,7 +309,7 @@
                             <li>Анализ сайтов</li>
                             <li>Связь с координатором</li>
                         </ul>
-                        <button onclick="openModal('Лидогенерация - Стандарт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <button onclick="scrollToContactForm('Лидогенерация - Стандарт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                             Заказать
                         </button>
                     </div>
@@ -317,12 +329,12 @@
                             <li>Составление сценария</li>
                             <li>Связь с координатором</li>
                         </ul>
-                        <button onclick="openModal('Лидогенерация + Call-центр - Пилот')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <button onclick="scrollToContactForm('Лидогенерация + Call-центр - Пилот')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                             Заказать
                         </button>
                     </div>
 
-                    <div class="pricing-card featured p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                    <div class="pricing-card featured p-8 rounded-sm fade-in">
                         <h3 class="font-serif text-2xl text-white mb-2">Стандарт</h3>
                         <div class="text-4xl font-bold text-gold-500 mb-2">405 000 ₽</div>
                         <p class="text-gray-400 text-sm mb-6">3000 определений + Call-центр</p>
@@ -332,12 +344,12 @@
                             <li>Составление сценария</li>
                             <li>Связь с координатором</li>
                         </ul>
-                        <button onclick="openModal('Лидогенерация + Call-центр - Стандарт')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <button onclick="scrollToContactForm('Лидогенерация + Call-центр - Стандарт')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                             Заказать
                         </button>
                     </div>
 
-                    <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                    <div class="pricing-card p-8 rounded-sm fade-in">
                         <h3 class="font-serif text-2xl text-white mb-2">Премиум</h3>
                         <div class="text-4xl font-bold text-gold-500 mb-2">1 290 000 ₽</div>
                         <p class="text-gray-400 text-sm mb-6">10000 определений + Call-центр</p>
@@ -347,7 +359,7 @@
                             <li>Составление сценария</li>
                             <li>Связь с координатором</li>
                         </ul>
-                        <button onclick="openModal('Лидогенерация + Call-центр - Премиум')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                        <button onclick="scrollToContactForm('Лидогенерация + Call-центр - Премиум')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                             Заказать
                         </button>
                     </div>
@@ -377,12 +389,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Call-центр - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Call-центр - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card featured p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                <div class="pricing-card featured p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Стандарт</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">100 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">800 диалогов</p>
@@ -391,12 +403,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Call-центр - Стандарт')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Call-центр - Стандарт')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Профи</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">200 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">2500 диалогов</p>
@@ -405,12 +417,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Call-центр - Профи')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Call-центр - Профи')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 300ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Макси</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">800 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">12000 диалогов</p>
@@ -419,7 +431,7 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Call-центр - Макси')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Call-центр - Макси')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
@@ -449,12 +461,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Рекрутинг - Тест')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Рекрутинг - Тест')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Старт</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">74 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">400 определений</p>
@@ -464,12 +476,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Рекрутинг - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Рекрутинг - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card featured p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                <div class="pricing-card featured p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Пилот</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">148 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">1000 определений</p>
@@ -479,12 +491,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Рекрутинг - Пилот')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Рекрутинг - Пилот')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 300ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Стандарт</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">405 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">3000 определений</p>
@@ -494,12 +506,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Рекрутинг - Стандарт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Рекрутинг - Стандарт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 400ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Премиум</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">1 290 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">10000 определений</p>
@@ -509,7 +521,7 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Рекрутинг - Премиум')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Рекрутинг - Премиум')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
@@ -539,12 +551,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Лид-КОД - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Лид-КОД - Старт')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card featured p-8 rounded-sm fade-in" style="transition-delay: 100ms;">
+                <div class="pricing-card featured p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Стандарт</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">100 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">800 определений</p>
@@ -554,12 +566,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Лид-КОД - Стандарт')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Лид-КОД - Стандарт')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 200ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Профи</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">225 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">2500 определений</p>
@@ -569,12 +581,12 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Лид-КОД - Профи')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Лид-КОД - Профи')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
 
-                <div class="pricing-card p-8 rounded-sm fade-in" style="transition-delay: 300ms;">
+                <div class="pricing-card p-8 rounded-sm fade-in">
                     <h3 class="font-serif text-xl text-white mb-2">Макси</h3>
                     <div class="text-3xl font-bold text-gold-500 mb-2">897 000 ₽</div>
                     <p class="text-gray-400 text-sm mb-6">12000 определений</p>
@@ -584,7 +596,7 @@
                         <li>Составление сценария</li>
                         <li>Связь с координатором</li>
                     </ul>
-                    <button onclick="openModal('Лид-КОД - Макси')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
+                    <button onclick="scrollToContactForm('Лид-КОД - Макси')" class="btn-outline w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Заказать
                     </button>
                 </div>
@@ -726,9 +738,10 @@
                     </div>
                     <div class="mb-6">
                         <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Интересующая услуга</label>
-                        <select name="service" class="form-input w-full px-4 py-3 text-white rounded-sm">
+                        <select name="service" class="form-input w-full px-4 py-3 text-white bg-black-850 rounded-sm">
                             <option value="">Выберите услугу</option>
                             <option value="Лидогенерация">Лидогенерация</option>
+                            <option value="Лидогенерация + Call-центр">Лидогенерация + Call-центр</option>
                             <option value="Call-центр">Call-центр</option>
                             <option value="Авито под ключ">Авито под ключ</option>
                             <option value="Рекрутинг">Рекрутинг</option>
@@ -738,7 +751,7 @@
                     </div>
                     <div class="mb-6">
                         <label class="block text-gold-500 text-xs uppercase tracking-widest mb-2">Комментарий</label>
-                        <textarea name="comment" rows="3" class="form-input w-full px-4 py-3 text-white rounded-sm" placeholder="Дополнительная информация..."></textarea>
+                        <textarea name="message" rows="3" class="form-input w-full px-4 py-3 text-white rounded-sm" placeholder="Дополнительная информация..."></textarea>
                     </div>
                     <button type="submit" class="btn-gold w-full py-4 text-sm font-bold uppercase tracking-widest rounded-sm">
                         Отправить заявку

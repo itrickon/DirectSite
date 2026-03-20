@@ -215,7 +215,7 @@
                             <i class="fas fa-calendar text-gold-500"></i>
                             <span>Сб-Вс выходные</span>
                         </div>
-                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
+                        <a href="#apply" onclick="selectVacancy('Оператор Call-центра')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
                         </a>
                     </div>
@@ -253,7 +253,7 @@
                             <i class="fas fa-ruble-sign text-gold-500"></i>
                             <span>Средняя ЗП от 50 000 ₽</span>
                         </div>
-                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
+                        <a href="#apply" onclick="selectVacancy('Менеджер по продажам')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
                         </a>
                     </div>
@@ -291,7 +291,7 @@
                             <i class="fas fa-graduation-cap text-gold-500"></i>
                             <span>Обучение предоставляется</span>
                         </div>
-                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
+                        <a href="#apply" onclick="selectVacancy('Авитолог')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
                         </a>
                     </div>
@@ -329,7 +329,7 @@
                             <i class="fas fa-map-marker-alt text-gold-500"></i>
                             <span>Офис: ул. Астраханская, 87в</span>
                         </div>
-                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
+                        <a href="#apply" onclick="selectVacancy('Сборщик информации')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
                         </a>
                     </div>
@@ -367,7 +367,7 @@
                             <i class="fas fa-gift text-gold-500"></i>
                             <span>Оклад + премия</span>
                         </div>
-                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
+                        <a href="#apply" onclick="selectVacancy('HR-менеджер')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
                         </a>
                     </div>
@@ -405,7 +405,7 @@
                             <i class="fas fa-chart-line text-gold-500"></i>
                             <span>Карьерный рост</span>
                         </div>
-                        <a href="#apply" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
+                        <a href="#apply" onclick="selectVacancy('Руководитель отдела продаж')" class="btn-gold w-full py-3 text-sm font-bold uppercase tracking-widest rounded-sm inline-block text-center">
                             Хочу в команду
                         </a>
                     </div>
@@ -583,6 +583,9 @@
 
     <!-- Main JavaScript -->
     <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- Page Specific JavaScript -->
+    <script src="{% static 'js/vacancy.js' %}"></script>
 </body>
 </html>
 

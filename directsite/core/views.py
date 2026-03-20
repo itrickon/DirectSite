@@ -1,9 +1,76 @@
+import requests
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .models import Lead, VacancyApplication
 from .forms import LeadForm, VacancyApplicationForm
+
+
+def send_to_bitrix24(data: dict, deal_type: str = 'vacancy') -> bool:
+    """
+    Отправляет данные в Битрикс24 через вебхук
+    
+    Args:
+        data: Словарь с данными заявки
+        deal_type: Тип заявки ('vacancy' или 'lead')
+    
+    Returns:
+        bool: True если успешно
+    """
+    # TODO: Вставьте ваш URL вебхука Битрикс24
+    BITRIX24_WEBHOOK = 'ВАШ_URL_ВЕБХУКА'  # Например: https://your-company.bitrix24.ru/rest/1/xxxxx/
+    
+    if BITRIX24_WEBHOOK == 'ВАШ_URL_ВЕБХУКА':
+        print("⚠️ Битрикс24 вебхук не настроен! Заявка сохранена только в базе.")
+        return False
+    
+    try:
+        # Формируем данные для сделки/лида
+        if deal_type == 'vacancy':
+            fields = {
+                'fields': {
+                    'TITLE': f"Отклик на вакансию: {data.get('position', 'Не указано')}",
+                    'NAME': data.get('name', ''),
+                    'PHONE': [{'VALUE': data.get('phone', ''), 'VALUE_TYPE': 'WORK'}],
+                    'EMAIL': [{'VALUE': data.get('email', ''), 'VALUE_TYPE': 'WORK'}],
+                    'COMMENTS': f"Вакансия: {data.get('position', '')}\nОпыт: {data.get('experience', '')}",
+                    'SOURCE_ID': 'WEBSITE',
+                    'STATUS_ID': 'NEW',
+                    'OPENED': 'Y'
+                }
+            }
+        else:  # lead
+            fields = {
+                'fields': {
+                    'TITLE': f"Заявка с сайта: {data.get('name', '')}",
+                    'NAME': data.get('name', ''),
+                    'PHONE': [{'VALUE': data.get('phone', ''), 'VALUE_TYPE': 'WORK'}],
+                    'EMAIL': [{'VALUE': data.get('email', ''), 'VALUE_TYPE': 'WORK'}],
+                    'COMMENTS': f"Услуга: {data.get('service', '')}\nСообщение: {data.get('message', '')}",
+                    'SOURCE_ID': 'WEBSITE',
+                    'STATUS_ID': 'NEW',
+                    'OPENED': 'Y'
+                }
+            }
+        
+        # Отправляем в Битрикс24 (создание лида)
+        url = f"{BITRIX24_WEBHOOK}crm.lead.add"
+        response = requests.post(url, json=fields, timeout=30)
+        result = response.json()
+        
+        if result.get('result'):
+            print(f"✅ Заявка отправлена в Битрикс24 (ID: {result['result']})")
+            return True
+        else:
+            print(f"❌ Ошибка Битрикс24: {result}")
+            return False
+            
+    except requests.exceptions.Timeout:
+        print("⚠️ Таймаут при отправке в Битрикс24")
+        return False
+    except Exception as e:
+        print(f"⚠️ Ошибка отправки в Битрикс24: {e}")
+        return False
 
 
 def index(request):
@@ -11,7 +78,17 @@ def index(request):
     if request.method == 'POST':
         form = LeadForm(request.POST)
         if form.is_valid():
-            form.save()
+            lead = form.save()
+            
+            # Отправляем в Битрикс24
+            send_to_bitrix24({
+                'name': lead.name,
+                'phone': lead.phone,
+                'email': lead.email,
+                'service': lead.get_service_display(),
+                'message': lead.message
+            }, deal_type='lead')
+            
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             messages.success(request, 'Заявка успешно отправлена!')
@@ -30,7 +107,17 @@ def service(request):
     if request.method == 'POST':
         form = LeadForm(request.POST)
         if form.is_valid():
-            form.save()
+            lead = form.save()
+            
+            # Отправляем в Битрикс24
+            send_to_bitrix24({
+                'name': lead.name,
+                'phone': lead.phone,
+                'email': lead.email,
+                'service': lead.get_service_display(),
+                'message': lead.message
+            }, deal_type='lead')
+            
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             messages.success(request, 'Заявка успешно отправлена!')
@@ -49,7 +136,17 @@ def contacts(request):
     if request.method == 'POST':
         form = LeadForm(request.POST)
         if form.is_valid():
-            form.save()
+            lead = form.save()
+            
+            # Отправляем в Битрикс24
+            send_to_bitrix24({
+                'name': lead.name,
+                'phone': lead.phone,
+                'email': lead.email,
+                'service': lead.get_service_display(),
+                'message': lead.message
+            }, deal_type='lead')
+            
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             messages.success(request, 'Заявка успешно отправлена!')
@@ -68,7 +165,17 @@ def vacancy(request):
     if request.method == 'POST':
         form = VacancyApplicationForm(request.POST)
         if form.is_valid():
-            form.save()
+            application = form.save()
+
+            # Отправляем в Битрикс24
+            send_to_bitrix24({
+                'name': application.name,
+                'phone': application.phone,
+                'email': application.email,
+                'position': application.position,
+                'experience': application.experience
+            }, deal_type='vacancy')
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Отклик успешно отправлен!'})
             messages.success(request, 'Отклик успешно отправлен!')
@@ -87,7 +194,7 @@ def calculator(request):
     return render(request, 'calculator.html')
 
 def team(request):
-    """Страница калькулятора"""
+    """Страница команды"""
     return render(request, 'team.html')
 
 def privacy_policy(request):

@@ -150,8 +150,33 @@ body {
 
 /*НАВИГАЦИЯ*/
 
+/* Показываем навигацию на экранах ≥1024px */
+@media (min-width: 1024px) {
+    .hidden.lg\:flex {
+        display: flex !important;
+    }
+    .lg\:hidden {
+        display: none !important;
+    }
+    .lg\:flex.items-center {
+        align-items: center !important;
+    }
+    .lg\:flex.space-x-8 > * + * {
+        margin-left: 2rem !important;
+    }
+}
+
 .nav-link {
     position: relative;
+    color: #d1d5db;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #d4af37;
 }
 
 .nav-link::after {

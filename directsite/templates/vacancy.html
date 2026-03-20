@@ -54,9 +54,9 @@
 
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="{% url 'index' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
-                    <a href="index.html#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
-                    <a href="index.html#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
-                    <a href="index.html#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
+                    <a href="{% url 'index' %}#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="{% url 'index' %}#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
+                    <a href="{% url 'index' %}#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
                     <a href="{% url 'vacancy' %}" class="nav-link text-gold-500 text-sm font-bold">Вакансии</a>
                     <a href="{% url 'contacts' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Контакты</a>
                 </div>
@@ -79,9 +79,9 @@
             </div>
             <nav class="space-y-4">
                 <a href="{% url 'index' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
-                <a href="index.html#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
-                <a href="index.html#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
-                <a href="index.html#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
+                <a href="{% url 'index' %}#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Услуги</a>
+                <a href="{% url 'index' %}#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
+                <a href="{% url 'index' %}#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
                 <a href="{% url 'vacancy' %}" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2">Вакансии</a>
                 <a href="{% url 'contacts' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Контакты</a>
             </nav>

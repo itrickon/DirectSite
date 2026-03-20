@@ -23,6 +23,6 @@ for filename in files:
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
     
-    print(f"✓ {filename} обновлён")
+    print(f"{filename} обновлён")
 
 print("\nГотово! Кнопка 'Связаться' добавлена в навигацию")

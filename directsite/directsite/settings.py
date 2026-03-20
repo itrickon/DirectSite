@@ -11,21 +11,34 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import json
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Загрузка настроек из settings.json (для продакшена)
+SETTINGS_FILE = BASE_DIR / 'settings.json'
+if SETTINGS_FILE.exists():
+    with open(SETTINGS_FILE) as f:
+        settings_data = json.load(f)
+    SECRET_KEY = settings_data.get('SECRET_KEY', SECRET_KEY)
+    DEBUG = settings_data.get('DEBUG', DEBUG)
+    ALLOWED_HOSTS = settings_data.get('ALLOWED_HOSTS', [])
+    DATABASES = settings_data.get('DATABASES', DATABASES)
+    TELEGRAM_BOT_TOKEN = settings_data.get('TELEGRAM_BOT_TOKEN', '')
+    TELEGRAM_CHAT_ID = settings_data.get('TELEGRAM_CHAT_ID', '')
+else:
+    SECRET_KEY = 'django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9'
+    DEBUG = True
+    ALLOWED_HOSTS = []
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition

@@ -1,0 +1,17 @@
+{
+  "SECRET_KEY": "django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9",
+  "DEBUG": true,
+  "ALLOWED_HOSTS": ["your-domain.tw1.ru", "localhost", "127.0.0.1"],
+  "DATABASES": {
+    "default": {
+      "ENGINE": "django.db.backends.mysql",
+      "NAME": "csXXXXX_db",
+      "USER": "csXXXXX_db",
+      "PASSWORD": "your_password",
+      "HOST": "localhost",
+      "PORT": "3306"
+    }
+  },
+  "TELEGRAM_BOT_TOKEN": "8759215207:AAH8MINAOy0pD796VyuWSxz-XiojZZUHTSE",
+  "TELEGRAM_CHAT_ID": "2072693808"
+}

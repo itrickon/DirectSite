@@ -4,72 +4,49 @@ from django.http import JsonResponse
 from django.contrib import messages
 from .models import Lead, VacancyApplication
 from .forms import LeadForm, VacancyApplicationForm
+from directsite.telegram_config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
 
-def send_to_bitrix24(data: dict, deal_type: str = 'vacancy') -> bool:
-    """
-    Отправляет данные в Битрикс24 через вебхук
-    
-    Args:
-        data: Словарь с данными заявки
-        deal_type: Тип заявки ('vacancy' или 'lead')
-    
-    Returns:
-        bool: True если успешно
-    """
-    # TODO: Вставьте ваш URL вебхука Битрикс24
-    BITRIX24_WEBHOOK = 'ВАШ_URL_ВЕБХУКА'  # Например: https://your-company.bitrix24.ru/rest/1/xxxxx/
-    
-    if BITRIX24_WEBHOOK == 'ВАШ_URL_ВЕБХУКА':
-        print("⚠️ Битрикс24 вебхук не настроен! Заявка сохранена только в базе.")
-        return False
-    
+def send_to_telegram(message: str) -> bool:
+    """Отправляет сообщение в Telegram"""
     try:
-        # Формируем данные для сделки/лида
-        if deal_type == 'vacancy':
-            fields = {
-                'fields': {
-                    'TITLE': f"Отклик на вакансию: {data.get('position', 'Не указано')}",
-                    'NAME': data.get('name', ''),
-                    'PHONE': [{'VALUE': data.get('phone', ''), 'VALUE_TYPE': 'WORK'}],
-                    'EMAIL': [{'VALUE': data.get('email', ''), 'VALUE_TYPE': 'WORK'}],
-                    'COMMENTS': f"Вакансия: {data.get('position', '')}\nОпыт: {data.get('experience', '')}",
-                    'SOURCE_ID': 'WEBSITE',
-                    'STATUS_ID': 'NEW',
-                    'OPENED': 'Y'
-                }
-            }
-        else:  # lead
-            fields = {
-                'fields': {
-                    'TITLE': f"Заявка с сайта: {data.get('name', '')}",
-                    'NAME': data.get('name', ''),
-                    'PHONE': [{'VALUE': data.get('phone', ''), 'VALUE_TYPE': 'WORK'}],
-                    'EMAIL': [{'VALUE': data.get('email', ''), 'VALUE_TYPE': 'WORK'}],
-                    'COMMENTS': f"Услуга: {data.get('service', '')}\nСообщение: {data.get('message', '')}",
-                    'SOURCE_ID': 'WEBSITE',
-                    'STATUS_ID': 'NEW',
-                    'OPENED': 'Y'
-                }
-            }
+        url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
+        data = {
+            'chat_id': TELEGRAM_CHAT_ID,
+            'text': message,
+            'parse_mode': 'HTML'
+        }
+        print(f"=== Отправка в Telegram ===")
+        print(f"URL: {url}")
+        print(f"Chat ID: {TELEGRAM_CHAT_ID}")
+        print(f"Токен (первые 10 символов): {TELEGRAM_BOT_TOKEN[:10]}...")
         
-        # Отправляем в Битрикс24 (создание лида)
-        url = f"{BITRIX24_WEBHOOK}crm.lead.add"
-        response = requests.post(url, json=fields, timeout=30)
-        result = response.json()
+        # Прокси для России (если нужно)
+        proxies = {
+            'http': 'http://proxy:port',
+            'https': 'http://proxy:port',
+        }
         
-        if result.get('result'):
-            print(f"✅ Заявка отправлена в Битрикс24 (ID: {result['result']})")
+        response = requests.post(url, data=data, timeout=10)  # , proxies=proxies
+        print(f"Status code: {response.status_code}")
+        print(f"Response: {response.text}")
+        
+        if response.status_code == 200:
+            print("Успешно отправлено!")
             return True
         else:
-            print(f"❌ Ошибка Битрикс24: {result}")
+            print(f"Ошибка: {response.status_code}")
             return False
-            
-    except requests.exceptions.Timeout:
-        print("⚠️ Таймаут при отправке в Битрикс24")
+    except requests.exceptions.Timeout as e:
+        print(f"Таймаут: {e}")
+        print("Возможно, Telegram заблокиирован. Настройте прокси.")
+        return False
+    except requests.exceptions.ConnectionError as e:
+        print(f"Ошибка соединения: {e}")
+        print("Проверьте интернет или настройте прокси.")
         return False
     except Exception as e:
-        print(f"⚠️ Ошибка отправки в Битрикс24: {e}")
+        print(f"Исключение: {e}")
         return False
 
 
@@ -80,14 +57,20 @@ def index(request):
         if form.is_valid():
             lead = form.save()
             
-            # Отправляем в Битрикс24
-            send_to_bitrix24({
-                'name': lead.name,
-                'phone': lead.phone,
-                'email': lead.email,
-                'service': lead.get_service_display(),
-                'message': lead.message
-            }, deal_type='lead')
+            # Отправляем в Telegram
+            message = f"""
+<b>Новая заявка с сайта!</b>
+
+<b>Имя:</b> {lead.name}
+<b>Телефон:</b> {lead.phone}
+<b>Email:</b> {lead.email or 'Не указан'}
+<b>Услуга:</b> {lead.get_service_display()}
+<b>Комментарий:</b> {lead.message or 'Не указан'}
+
+<b>Дата:</b> {lead.created_at.strftime('%d.%m.%Y %H:%M')}
+            """.strip()
+            
+            send_to_telegram(message)
             
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
@@ -103,20 +86,26 @@ def index(request):
 
 
 def service(request):
-    """Страница услуг и тарифов"""
+    """Страница услуг"""
     if request.method == 'POST':
         form = LeadForm(request.POST)
         if form.is_valid():
             lead = form.save()
             
-            # Отправляем в Битрикс24
-            send_to_bitrix24({
-                'name': lead.name,
-                'phone': lead.phone,
-                'email': lead.email,
-                'service': lead.get_service_display(),
-                'message': lead.message
-            }, deal_type='lead')
+            # Отправляем в Telegram
+            message = f"""
+<b>Новая заявка с сайта!</b>
+
+<b>Имя:</b> {lead.name}
+<b>Телефон:</b> {lead.phone}
+<b>Email:</b> {lead.email or 'Не указан'}
+<b>Услуга:</b> {lead.get_service_display()}
+<b>Комментарий:</b> {lead.message or 'Не указан'}
+
+<b>Дата:</b> {lead.created_at.strftime('%d.%m.%Y %H:%M')}
+            """.strip()
+            
+            send_to_telegram(message)
             
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
@@ -138,14 +127,20 @@ def contacts(request):
         if form.is_valid():
             lead = form.save()
             
-            # Отправляем в Битрикс24
-            send_to_bitrix24({
-                'name': lead.name,
-                'phone': lead.phone,
-                'email': lead.email,
-                'service': lead.get_service_display(),
-                'message': lead.message
-            }, deal_type='lead')
+            # Отправляем в Telegram
+            message = f"""
+<b>Новая заявка с сайта!</b>
+
+<b>Имя:</b> {lead.name}
+<b>Телефон:</b> {lead.phone}
+<b>Email:</b> {lead.email or 'Не указан'}
+<b>Услуга:</b> {lead.get_service_display()}
+<b>Комментарий:</b> {lead.message or 'Не указан'}
+
+<b>Дата:</b> {lead.created_at.strftime('%d.%m.%Y %H:%M')}
+            """.strip()
+            
+            send_to_telegram(message)
             
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
@@ -165,17 +160,23 @@ def vacancy(request):
     if request.method == 'POST':
         form = VacancyApplicationForm(request.POST)
         if form.is_valid():
-            application = form.save()
+            app = form.save()
+            
+            # Отправляем в Telegram
+            message = f"""
+<b>Новый отклик на вакансию!</b>
 
-            # Отправляем в Битрикс24
-            send_to_bitrix24({
-                'name': application.name,
-                'phone': application.phone,
-                'email': application.email,
-                'position': application.position,
-                'experience': application.experience
-            }, deal_type='vacancy')
+<b>Имя:</b> {app.name}
+<b>Телефон:</b> {app.phone}
+<b>Email:</b> {app.email or 'Не указан'}
+<b>Вакансия:</b> {app.position}
+<b>Опыт:</b> {app.experience or 'Не указан'}
 
+<b>Дата:</b> {app.created_at.strftime('%d.%m.%Y %H:%M')}
+            """.strip()
+            
+            send_to_telegram(message)
+            
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Отклик успешно отправлен!'})
             messages.success(request, 'Отклик успешно отправлен!')
@@ -193,9 +194,11 @@ def calculator(request):
     """Страница калькулятора"""
     return render(request, 'calculator.html')
 
+
 def team(request):
     """Страница команды"""
     return render(request, 'team.html')
+
 
 def privacy_policy(request):
     """Политика конфиденциальности"""

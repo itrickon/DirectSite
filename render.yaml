@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: directsite
+    env: python
+    region: frankfurt  # Германия для Telegram
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python directsite/manage.py collectstatic --noinput
+    startCommand: |
+      cd directsite && gunicorn directsite.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: DEBUG
+        value: false
+    staticSites:
+      - publishPath: directsite/staticfiles
+        urlPrefix: /static

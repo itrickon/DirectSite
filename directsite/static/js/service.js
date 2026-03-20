@@ -157,25 +157,6 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// ФОРМАТТЕР ТЕЛЕФОНА
- 
-function initPhoneFormatter() {
-    const phoneInputs = document.querySelectorAll('input[type="tel"]');
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.substring(0, 11);
-
-            let formatted = '+7';
-            if (value.length > 0) formatted += ' (' + value.substring(0, 3);
-            if (value.length > 3) formatted += ') ' + value.substring(3, 6);
-            if (value.length > 6) formatted += '-' + value.substring(6, 8);
-            if (value.length > 8) formatted += '-' + value.substring(8, 10);
-            e.target.value = formatted;
-        });
-    });
-}
-
 // АККОРДЕОН
  
 function toggleAccordion(header) {
@@ -195,7 +176,6 @@ function toggleAccordion(header) {
 
 document.addEventListener('DOMContentLoaded', function() {
     initServiceTabs();
-    initPhoneFormatter();
     initAvitoButtons();
     console.log('DirectLine service.js: Скрипты инициализированы');
 });

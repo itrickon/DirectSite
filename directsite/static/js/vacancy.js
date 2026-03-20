@@ -38,33 +38,13 @@ function selectVacancy(vacancyName) {
     if (nameField) {
         setTimeout(() => nameField.focus(), 800);
     }
-    
+
     // Предотвращаем переход по ссылке
     return false;
-}
-
-// ФОРМАТТЕР ТЕЛЕФОНА
-
-function initPhoneFormatter() {
-    const phoneInputs = document.querySelectorAll('input[type="tel"]');
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.substring(0, 11);
-
-            let formatted = '+7';
-            if (value.length > 0) formatted += ' (' + value.substring(0, 3);
-            if (value.length > 3) formatted += ') ' + value.substring(3, 6);
-            if (value.length > 6) formatted += '-' + value.substring(6, 8);
-            if (value.length > 8) formatted += '-' + value.substring(8, 10);
-            e.target.value = formatted;
-        });
-    });
 }
 
 // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
 
 document.addEventListener('DOMContentLoaded', function() {
-    initPhoneFormatter();
     console.log('DirectLine vacancy.js: Скрипты инициализированы');
 });

@@ -465,6 +465,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initAccordion();
     initTabs();
     initStatsAnimation();
+    initPhoneFormatter();
 
     // Инициализация калькулятора если он есть на странице
     if (document.getElementById('profitCalculator')) {
@@ -493,3 +494,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('DirectLine: Все скрипты инициализированы');
 });
+
+// ФОРМАТТЕР ТЕЛЕФОНА
+
+function initPhoneFormatter() {
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+    phoneInputs.forEach(input => {
+        // Устанавливаем placeholder
+        input.placeholder = '+7 (___) ___-__-__';
+        
+        input.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Удаляем всё кроме цифр
+
+            // Убираем 7, 8 или +7 в начале, если есть
+            if (value.startsWith('7')) value = value.substring(1);
+            if (value.startsWith('8')) value = value.substring(1);
+
+            // Ограничиваем до 10 цифр
+            if (value.length > 10) value = value.substring(0, 10);
+
+            // Форматируем
+            let formatted = '+7';
+            if (value.length > 0) formatted += ' (' + value.substring(0, 3);
+            if (value.length > 3) formatted += ') ' + value.substring(3, 6);
+            if (value.length > 6) formatted += '-' + value.substring(6, 8);
+            if (value.length > 8) formatted += '-' + value.substring(8, 10);
+
+            e.target.value = formatted;
+        });
+        
+        // При фокусе - выделяем всё после +7 для удобства редактирования
+        input.addEventListener('focus', (e) => {
+            const value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                setTimeout(() => {
+                    input.setSelectionRange(4, input.value.length);
+                }, 10);
+            }
+        });
+    });
+}

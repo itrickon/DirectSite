@@ -1,54 +1,37 @@
 """
 Django settings for DirectSite project.
-Universal configuration for any hosting provider.
-
-Supported hosting:
-- PythonAnywhere
-- Timeweb
-- Beget
-- VPS (Ubuntu/CentOS)
-- Docker
-- Render, Railway, Heroku
-- Local development
+Настройки для PythonAnywhere
 """
 
 from pathlib import Path
 import os
 
-# Import universal configuration
-from config import (
-    get_bool_env,
-    get_list_env,
-    detect_hosting,
-    get_database_config,
-    get_allowed_hosts,
-    get_static_root,
-    get_project_path,
-)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# ============================================================
-# AUTO-DETECT HOSTING TYPE
-# ============================================================
-HOSTING_TYPE = detect_hosting()
 
 # ============================================================
 # CORE SETTINGS
 # ============================================================
 
-# Security settings from environment
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
-DEBUG = get_bool_env('DEBUG', False)
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9')
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-# Allowed hosts from environment or defaults
-ALLOWED_HOSTS = get_allowed_hosts(HOSTING_TYPE)
+ALLOWED_HOSTS = [
+    'tricko66.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 # ============================================================
-# DATABASE CONFIGURATION
+# DATABASE CONFIGURATION (SQLite)
 # ============================================================
-DATABASES = get_database_config(BASE_DIR, HOSTING_TYPE)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # ============================================================
 # APPLICATION DEFINITION
@@ -78,7 +61,15 @@ MIDDLEWARE = [
 if not DEBUG:
     MIDDLEWARE.insert(0, 'django.middleware.security.SecurityMiddleware')
 
+# ============================================================
+# ROOT URL CONF - ОБЯЗАТЕЛЬНО!
+# ============================================================
+
 ROOT_URLCONF = 'directsite.urls'
+
+# ============================================================
+# TEMPLATES
+# ============================================================
 
 TEMPLATES = [
     {
@@ -95,6 +86,10 @@ TEMPLATES = [
         },
     },
 ]
+
+# ============================================================
+# WSGI APPLICATION
+# ============================================================
 
 WSGI_APPLICATION = 'directsite.wsgi.application'
 
@@ -113,8 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # INTERNATIONALIZATION
 # ============================================================
 
-LANGUAGE_CODE = 'ru-ru'  # Russian language
-TIME_ZONE = 'Europe/Moscow'  # Moscow timezone
+LANGUAGE_CODE = 'ru-ru'
+TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
 USE_TZ = True
 
@@ -122,8 +117,8 @@ USE_TZ = True
 # STATIC FILES
 # ============================================================
 
-STATIC_URL = os.environ.get('STATIC_URL', '/static/')
-STATIC_ROOT = get_static_root(BASE_DIR, HOSTING_TYPE)
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # ============================================================
@@ -137,16 +132,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ============================================================
 
 if not DEBUG:
-    # Security headers
-    SECURE_SSL_REDIRECT = get_bool_env('SECURE_SSL_REDIRECT', True)
-    SESSION_COOKIE_SECURE = get_bool_env('SESSION_COOKIE_SECURE', True)
-    CSRF_COOKIE_SECURE = get_bool_env('CSRF_COOKIE_SECURE', True)
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = 'DENY'
-    SECURE_HSTS_SECONDS = get_bool_env('SECURE_HSTS_SECONDS', 31536000)
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = get_bool_env('SECURE_HSTS_INCLUDE_SUBDOMAINS', True)
-    SECURE_HSTS_PRELOAD = get_bool_env('SECURE_HSTS_PRELOAD', True)
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 # CSRF trusted origins
 CSRF_TRUSTED_ORIGINS = [
@@ -157,63 +151,11 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.direct-line-sar.ru',
 ]
 
-# Add from environment
-csrf_origins = get_list_env('CSRF_TRUSTED_ORIGINS')
-if csrf_origins:
-    CSRF_TRUSTED_ORIGINS.extend(csrf_origins)
-
 # ============================================================
-# LOGGING
+# LOGGING - ОТКЛЮЧЕНО ДЛЯ PYTHONANYWHERE
 # ============================================================
 
-# Создаём папку для логов если не существует
-LOGS_DIR = BASE_DIR / 'logs'
-LOGS_DIR.mkdir(exist_ok=True)
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'DEBUG' if DEBUG else 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'core': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-    },
-}
-
-# Файловое логирование только если папка существует и доступна для записи
-if LOGS_DIR.exists() and os.access(LOGS_DIR, os.W_OK):
-    LOGGING['handlers']['file'] = {
-        'level': 'INFO',
-        'class': 'logging.FileHandler',
-        'filename': LOGS_DIR / 'django.log',
-        'formatter': 'verbose',
-    }
-    LOGGING['loggers']['django']['handlers'].append('file')
-    LOGGING['loggers']['core']['handlers'].append('file')
+LOGGING = {}
 
 # ============================================================
 # TELEGRAM CONFIGURATION
@@ -221,7 +163,6 @@ if LOGS_DIR.exists() and os.access(LOGS_DIR, os.W_OK):
 
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
 TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID', '')
-TELEGRAM_PROXY = os.environ.get('TELEGRAM_PROXY', '')
 
 # ============================================================
 # EMAIL CONFIGURATION
@@ -230,55 +171,22 @@ TELEGRAM_PROXY = os.environ.get('TELEGRAM_PROXY', '')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
-EMAIL_USE_TLS = get_bool_env('EMAIL_USE_TLS', True)
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'DirectLine <noreply@direct-line-sar.ru>')
 ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'directlines@atomicmail.io')
 
 # ============================================================
-# HOSTING-SPECIFIC SETTINGS
-# ============================================================
-
-# PythonAnywhere specific
-if HOSTING_TYPE == 'pythonanywhere':
-    # PythonAnywhere has specific requirements
-    pass
-
-# Timeweb specific
-elif HOSTING_TYPE == 'timeweb':
-    # Timeweb uses Passenger
-    pass
-
-# VPS/Docker specific
-elif HOSTING_TYPE in ('vps', 'docker'):
-    # Can use Gunicorn, Nginx, etc.
-    pass
-
-# ============================================================
-# DEBUG TOOLBAR (DEVELOPMENT ONLY)
-# ============================================================
-
-if DEBUG:
-    # Enable debug toolbar in development
-    INSTALLED_APPS.append('debug_toolbar')
-    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-    INTERNAL_IPS = ['127.0.0.1', 'localhost']
-
-# ============================================================
-# PRINT CONFIGURATION INFO (DEBUG MODE)
+# PRINT CONFIGURATION (DEBUG)
 # ============================================================
 
 if DEBUG:
     print(f"\n{'='*60}")
     print(f"DJANGO CONFIGURATION (DEBUG MODE)")
     print(f"{'='*60}")
-    print(f"Hosting Type: {HOSTING_TYPE}")
     print(f"BASE_DIR: {BASE_DIR}")
     print(f"DEBUG: {DEBUG}")
     print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
     print(f"DATABASE: {DATABASES['default']['ENGINE']}")
-    print(f"STATIC_ROOT: {STATIC_ROOT}")
-    print(f"TELEGRAM_BOT_TOKEN: {'***' if TELEGRAM_BOT_TOKEN else 'Not set'}")
-    print(f"EMAIL_HOST_USER: {EMAIL_HOST_USER or 'Not set'}")
     print(f"{'='*60}\n")

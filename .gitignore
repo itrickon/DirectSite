@@ -1,4 +1,5 @@
 # Python
+.env.example
 telegram_config.py
 __pycache__/
 *.py[cod]
@@ -26,7 +27,9 @@ wheels/
 
 # Django
 *.log
+logs/
 local_settings.py
+settings.json
 db.sqlite3
 db.sqlite3-journal
 /media

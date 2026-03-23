@@ -1,0 +1,532 @@
+[
+{
+  "model": "core.lead",
+  "pk": 1,
+  "fields": {
+    "name": "а",
+    "phone": "9766575677",
+    "email": null,
+    "service": "recruiting",
+    "message": "",
+    "status": "new",
+    "created_at": "2026-03-19T11:50:31.976Z",
+    "updated_at": "2026-03-19T11:50:31.977Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 2,
+  "fields": {
+    "name": "Иван Иванов",
+    "phone": "+7 (777) 777-93-72",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "",
+    "status": "new",
+    "created_at": "2026-03-20T05:50:32.534Z",
+    "updated_at": "2026-03-20T05:50:32.534Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 3,
+  "fields": {
+    "name": "пакпеп",
+    "phone": "+7 (655) 656-56-57",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "аапре",
+    "status": "new",
+    "created_at": "2026-03-20T12:21:19.291Z",
+    "updated_at": "2026-03-20T12:21:19.291Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 4,
+  "fields": {
+    "name": "уцацуауца",
+    "phone": "+7 (465) 645-64-56",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "кпкерррк",
+    "status": "new",
+    "created_at": "2026-03-20T12:22:13.905Z",
+    "updated_at": "2026-03-20T12:22:13.905Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 5,
+  "fields": {
+    "name": "Иванов Иван",
+    "phone": "+7 (777) 777-93-72",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "мсчмсч",
+    "status": "new",
+    "created_at": "2026-03-20T12:25:13.507Z",
+    "updated_at": "2026-03-20T12:25:13.507Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 6,
+  "fields": {
+    "name": "fewfew",
+    "phone": "+7 (454) 354-36-43",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "dsfsadfds",
+    "status": "new",
+    "created_at": "2026-03-23T05:49:31.205Z",
+    "updated_at": "2026-03-23T05:49:31.205Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 7,
+  "fields": {
+    "name": "фывыфв",
+    "phone": "+7 (656) 777-67-65",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "ауцуцацу",
+    "status": "new",
+    "created_at": "2026-03-23T06:07:08.324Z",
+    "updated_at": "2026-03-23T06:07:08.324Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 8,
+  "fields": {
+    "name": "werwerwer",
+    "phone": "+7 (566) 566-54-66",
+    "email": "example@mail.com",
+    "service": "complex",
+    "message": "Тариф \"Стандарт\"",
+    "status": "new",
+    "created_at": "2026-03-23T06:16:01.368Z",
+    "updated_at": "2026-03-23T06:16:01.368Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 9,
+  "fields": {
+    "name": "435345",
+    "phone": "+7 (435) 345-34-53",
+    "email": "example@mail.com",
+    "service": "recruiting",
+    "message": "43534534534534",
+    "status": "new",
+    "created_at": "2026-03-23T06:26:06.369Z",
+    "updated_at": "2026-03-23T06:26:06.369Z"
+  }
+},
+{
+  "model": "core.lead",
+  "pk": 10,
+  "fields": {
+    "name": "34к43",
+    "phone": "+7 (343) 434-43-34",
+    "email": "example@mail.com",
+    "service": "",
+    "message": "к34к3",
+    "status": "new",
+    "created_at": "2026-03-23T06:47:58.913Z",
+    "updated_at": "2026-03-23T06:47:58.913Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 1,
+  "fields": {
+    "name": "паипаи",
+    "phone": "98789789897",
+    "email": "example@mail.com",
+    "position": "Менеджер по продажам",
+    "experience": "уцаауцца",
+    "created_at": "2026-03-20T05:55:37.728Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 2,
+  "fields": {
+    "name": "ЫАВппа",
+    "phone": "87987087078",
+    "email": "example@mail.com",
+    "position": "Авитолог",
+    "experience": "авывавыа",
+    "created_at": "2026-03-20T05:59:06.376Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 3,
+  "fields": {
+    "name": "ку",
+    "phone": "46546456",
+    "email": "example@mail.com",
+    "position": "Руководитель отдела продаж",
+    "experience": "ауцфцуа",
+    "created_at": "2026-03-20T05:59:56.748Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 4,
+  "fields": {
+    "name": "werr",
+    "phone": "+7 (443) 435-54-54",
+    "email": "example@mail.com",
+    "position": "Авитолог",
+    "experience": "czxdsfrgr",
+    "created_at": "2026-03-20T12:09:49.135Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 5,
+  "fields": {
+    "name": "ыфвыфв",
+    "phone": "+7 (777) 777-93-72",
+    "email": "example@mail.com",
+    "position": "HR-менеджер",
+    "experience": "вфывфыв",
+    "created_at": "2026-03-20T12:13:37.014Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 6,
+  "fields": {
+    "name": "уцкцук",
+    "phone": "+7 (435) 435-43-54",
+    "email": "example@mail.com",
+    "position": "Авитолог",
+    "experience": "цукцукцу",
+    "created_at": "2026-03-20T12:15:25.403Z"
+  }
+},
+{
+  "model": "core.vacancyapplication",
+  "pk": 7,
+  "fields": {
+    "name": "4353454",
+    "phone": "+7 (534) 534-53-45",
+    "email": "example@mail.com",
+    "position": "Менеджер по продажам",
+    "experience": "уеукеукеуке",
+    "created_at": "2026-03-23T06:07:53.810Z"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 3,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 3,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 3,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 3,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 2,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 2,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 2,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 2,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Заявка",
+    "content_type": 7,
+    "codename": "add_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Заявка",
+    "content_type": 7,
+    "codename": "change_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Заявка",
+    "content_type": 7,
+    "codename": "delete_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Заявка",
+    "content_type": 7,
+    "codename": "view_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Отклик на вакансию",
+    "content_type": 8,
+    "codename": "add_vacancyapplication"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Отклик на вакансию",
+    "content_type": 8,
+    "codename": "change_vacancyapplication"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Отклик на вакансию",
+    "content_type": 8,
+    "codename": "delete_vacancyapplication"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Отклик на вакансию",
+    "content_type": 8,
+    "codename": "view_vacancyapplication"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$umlWyJiURuXQohQyt00M4y$aNgct5GDf1xr8GNqoJN4W/j82e+OJqg+qSNZNvEE1ok=",
+    "last_login": "2026-03-17T13:06:07.739Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@direct-line.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-17T12:49:09.579Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

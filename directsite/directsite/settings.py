@@ -17,6 +17,17 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Значения по умолчанию
+SECRET_KEY = 'django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9'
+DEBUG = True
+ALLOWED_HOSTS = []
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 # Загрузка настроек из settings.json (для продакшена)
 SETTINGS_FILE = BASE_DIR / 'settings.json'
 if SETTINGS_FILE.exists():
@@ -24,14 +35,10 @@ if SETTINGS_FILE.exists():
         settings_data = json.load(f)
     SECRET_KEY = settings_data.get('SECRET_KEY', SECRET_KEY)
     DEBUG = settings_data.get('DEBUG', DEBUG)
-    ALLOWED_HOSTS = settings_data.get('ALLOWED_HOSTS', [])
+    ALLOWED_HOSTS = settings_data.get('ALLOWED_HOSTS', ALLOWED_HOSTS)
     DATABASES = settings_data.get('DATABASES', DATABASES)
     TELEGRAM_BOT_TOKEN = settings_data.get('TELEGRAM_BOT_TOKEN', '')
     TELEGRAM_CHAT_ID = settings_data.get('TELEGRAM_CHAT_ID', '')
-else:
-    SECRET_KEY = 'django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9'
-    DEBUG = True
-    ALLOWED_HOSTS = []
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,6 +46,26 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
+
+# Настройки безопасности для продакшена
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+# CSRF для доменов
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'https://direct-line-sar.ru',
+    'https://www.direct-line-sar.ru',
+]
 
 
 # Application definition
@@ -83,17 +110,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'directsite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -136,3 +152,63 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Логирование
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'core': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+
+
+# Email настройки (SMTP для отправки)
+# Письма будут приходить на ADMIN_EMAIL = directlines@atomicmail.io
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP для отправки (Gmail)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''  # Укажите ваш Gmail для отправки
+EMAIL_HOST_PASSWORD = ''  # Пароль приложения Gmail
+DEFAULT_FROM_EMAIL = 'DirectLine <noreply@direct-line-sar.ru>'
+ADMIN_EMAIL = 'directlines@atomicmail.io'  # Куда приходят письма
+
+# Загрузка email настроек из settings.json
+if SETTINGS_FILE.exists():
+    EMAIL_HOST_USER = settings_data.get('EMAIL_HOST_USER', EMAIL_HOST_USER)
+    EMAIL_HOST_PASSWORD = settings_data.get('EMAIL_HOST_PASSWORD', EMAIL_HOST_PASSWORD)
+    ADMIN_EMAIL = settings_data.get('ADMIN_EMAIL', ADMIN_EMAIL)

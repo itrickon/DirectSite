@@ -1,10 +1,15 @@
+import logging
 import requests
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.conf import settings
 from .models import Lead, VacancyApplication
 from .forms import LeadForm, VacancyApplicationForm
 from directsite.telegram_config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+
+logger = logging.getLogger('core')
 
 
 def send_to_telegram(message: str) -> bool:
@@ -16,37 +21,75 @@ def send_to_telegram(message: str) -> bool:
             'text': message,
             'parse_mode': 'HTML'
         }
-        print(f"=== Отправка в Telegram ===")
-        print(f"URL: {url}")
-        print(f"Chat ID: {TELEGRAM_CHAT_ID}")
-        print(f"Токен (первые 10 символов): {TELEGRAM_BOT_TOKEN[:10]}...")
-        
-        # Прокси для России (если нужно)
+        logger.info("=== Отправка в Telegram ===")
+        logger.info(f"Chat ID: {TELEGRAM_CHAT_ID}")
+
+        # Прокси для обхода блокировки Telegram в России
+        # Формат: http://логин:пароль@ip:port
         proxies = {
-            'http': 'http://proxy:port',
-            'https': 'http://proxy:port',
+            'http': 'http://KPsDQN:ySWMcT@190.111.161.74:9658',
+            'https': 'http://KPsDQN:ySWMcT@190.111.161.74:9658',
         }
-        
-        response = requests.post(url, data=data, timeout=10)  # , proxies=proxies
-        print(f"Status code: {response.status_code}")
-        print(f"Response: {response.text}")
-        
+
+        response = requests.post(url, data=data, timeout=10, proxies=proxies)
+        logger.info(f"Status code: {response.status_code}")
+
         if response.status_code == 200:
-            print("Успешно отправлено!")
+            logger.info("Успешно отправлено!")
             return True
         else:
-            print(f"Ошибка: {response.status_code}")
+            logger.warning(f"Ошибка Telegram API: {response.status_code} - {response.text}")
             return False
     except requests.exceptions.Timeout as e:
-        print(f"Таймаут: {e}")
-        print("Возможно, Telegram заблокиирован. Настройте прокси.")
+        logger.error(f"Таймаут при отправке в Telegram: {e}")
         return False
     except requests.exceptions.ConnectionError as e:
-        print(f"Ошибка соединения: {e}")
-        print("Проверьте интернет или настройте прокси.")
+        logger.error(f"Ошибка соединения с Telegram: {e}")
         return False
     except Exception as e:
-        print(f"Исключение: {e}")
+        logger.error(f"Неожиданная ошибка при отправке в Telegram: {e}")
+        return False
+
+
+def send_email_notification(lead_or_application) -> bool:
+    """Отправляет уведомление на email"""
+    try:
+        if isinstance(lead_or_application, Lead):
+            subject = f"Новая заявка от {lead_or_application.name}"
+            message = f"""
+Получена новая заявка с сайта!
+
+Имя: {lead_or_application.name}
+Телефон: {lead_or_application.phone}
+Email: {lead_or_application.email or 'Не указан'}
+Услуга: {lead_or_application.get_service_display()}
+Комментарий: {lead_or_application.message or 'Не указан'}
+Дата: {lead_or_application.created_at.strftime('%d.%m.%Y %H:%M')}
+            """.strip()
+        else:
+            subject = f"Отклик на вакансию от {lead_or_application.name}"
+            message = f"""
+Получен новый отклик на вакансию!
+
+Имя: {lead_or_application.name}
+Телефон: {lead_or_application.phone}
+Email: {lead_or_application.email or 'Не указан'}
+Вакансия: {lead_or_application.position}
+Опыт: {lead_or_application.experience or 'Не указан'}
+Дата: {lead_or_application.created_at.strftime('%d.%m.%Y %H:%M')}
+            """.strip()
+
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.ADMIN_EMAIL],
+            fail_silently=False,
+        )
+        logger.info(f"Email отправлен на {settings.ADMIN_EMAIL}")
+        return True
+    except Exception as e:
+        logger.error(f"Ошибка при отправке email: {e}")
         return False
 
 
@@ -56,7 +99,7 @@ def index(request):
         form = LeadForm(request.POST)
         if form.is_valid():
             lead = form.save()
-            
+
             # Отправляем в Telegram
             message = f"""
 <b>Новая заявка с сайта!</b>
@@ -69,9 +112,12 @@ def index(request):
 
 <b>Дата:</b> {lead.created_at.strftime('%d.%m.%Y %H:%M')}
             """.strip()
-            
+
             send_to_telegram(message)
             
+            # Отправляем email уведомление
+            send_email_notification(lead)
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             messages.success(request, 'Заявка успешно отправлена!')
@@ -91,7 +137,7 @@ def service(request):
         form = LeadForm(request.POST)
         if form.is_valid():
             lead = form.save()
-            
+
             # Отправляем в Telegram
             message = f"""
 <b>Новая заявка с сайта!</b>
@@ -104,9 +150,12 @@ def service(request):
 
 <b>Дата:</b> {lead.created_at.strftime('%d.%m.%Y %H:%M')}
             """.strip()
-            
+
             send_to_telegram(message)
             
+            # Отправляем email уведомление
+            send_email_notification(lead)
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             messages.success(request, 'Заявка успешно отправлена!')
@@ -126,7 +175,7 @@ def contacts(request):
         form = LeadForm(request.POST)
         if form.is_valid():
             lead = form.save()
-            
+
             # Отправляем в Telegram
             message = f"""
 <b>Новая заявка с сайта!</b>
@@ -139,9 +188,12 @@ def contacts(request):
 
 <b>Дата:</b> {lead.created_at.strftime('%d.%m.%Y %H:%M')}
             """.strip()
-            
+
             send_to_telegram(message)
             
+            # Отправляем email уведомление
+            send_email_notification(lead)
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             messages.success(request, 'Заявка успешно отправлена!')
@@ -161,7 +213,7 @@ def vacancy(request):
         form = VacancyApplicationForm(request.POST)
         if form.is_valid():
             app = form.save()
-            
+
             # Отправляем в Telegram
             message = f"""
 <b>Новый отклик на вакансию!</b>
@@ -174,9 +226,12 @@ def vacancy(request):
 
 <b>Дата:</b> {app.created_at.strftime('%d.%m.%Y %H:%M')}
             """.strip()
-            
+
             send_to_telegram(message)
             
+            # Отправляем email уведомление
+            send_email_notification(app)
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'success': True, 'message': 'Отклик успешно отправлен!'})
             messages.success(request, 'Отклик успешно отправлен!')

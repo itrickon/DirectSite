@@ -1,0 +1,182 @@
+[
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "34к43",
+      "phone": "+7 (343) 434-43-34",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "к34к3",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "435345",
+      "phone": "+7 (435) 345-34-53",
+      "email": "example@mail.com",
+      "service": "recruiting",
+      "message": "43534534534534",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "werwerwer",
+      "phone": "+7 (566) 566-54-66",
+      "email": "example@mail.com",
+      "service": "complex",
+      "message": "Тариф \"Стандарт\"",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "фывыфв",
+      "phone": "+7 (656) 777-67-65",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "ауцуцацу",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "fewfew",
+      "phone": "+7 (454) 354-36-43",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "dsfsadfds",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "Иванов Иван",
+      "phone": "+7 (777) 777-93-72",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "мсчмсч",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "уцацуауца",
+      "phone": "+7 (465) 645-64-56",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "кпкерррк",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "пакпеп",
+      "phone": "+7 (655) 656-56-57",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "аапре",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "Иван Иванов",
+      "phone": "+7 (777) 777-93-72",
+      "email": "example@mail.com",
+      "service": "",
+      "message": "",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.lead",
+    "fields": {
+      "name": "а",
+      "phone": "9766575677",
+      "email": "",
+      "service": "recruiting",
+      "message": "",
+      "status": "new"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "4353454",
+      "phone": "+7 (534) 534-53-45",
+      "email": "example@mail.com",
+      "position": "Менеджер по продажам",
+      "experience": "уеукеукеуке"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "уцкцук",
+      "phone": "+7 (435) 435-43-54",
+      "email": "example@mail.com",
+      "position": "Авитолог",
+      "experience": "цукцукцу"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "ыфвыфв",
+      "phone": "+7 (777) 777-93-72",
+      "email": "example@mail.com",
+      "position": "HR-менеджер",
+      "experience": "вфывфыв"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "werr",
+      "phone": "+7 (443) 435-54-54",
+      "email": "example@mail.com",
+      "position": "Авитолог",
+      "experience": "czxdsfrgr"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "ку",
+      "phone": "46546456",
+      "email": "example@mail.com",
+      "position": "Руководитель отдела продаж",
+      "experience": "ауцфцуа"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "ЫАВппа",
+      "phone": "87987087078",
+      "email": "example@mail.com",
+      "position": "Авитолог",
+      "experience": "авывавыа"
+    }
+  },
+  {
+    "model": "core.vacancyapplication",
+    "fields": {
+      "name": "паипаи",
+      "phone": "98789789897",
+      "email": "example@mail.com",
+      "position": "Менеджер по продажам",
+      "experience": "уцаауцца"
+    }
+  }
+]

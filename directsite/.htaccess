@@ -1,0 +1,18 @@
+# Django на Timeweb (Passenger)
+RewriteEngine On
+RewriteBase /
+
+# Настройки Passenger
+PassengerAppRoot /home/u/cc697629/directsite
+PassengerPythonApp /home/u/cc697629/directsite/passenger_wsgi.py
+PassengerEnabled On
+
+# Перенаправление запросов на Django
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>

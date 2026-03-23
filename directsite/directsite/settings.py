@@ -13,31 +13,22 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import json
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Значения по умолчанию
 SECRET_KEY = 'django-insecure-v3&o7+pphz)9b4k8d3f@tkm(*h1tu(e6b#k82z_6q570c**%!9'
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False  # Отключаем для production
+ALLOWED_HOSTS = ['cc697629.tw1.ru', 'direct-line-sar.ru', 'www.direct-line-sar.ru', 'localhost', '127.0.0.1']
 
-# Поддержка DATABASE_URL от Render
-if os.environ.get('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
-            conn_max_age=600
-        )
+# Используем SQLite на хостинге Timeweb
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 # Загрузка настроек из settings.json (для продакшена)
 SETTINGS_FILE = BASE_DIR / 'settings.json'
@@ -47,7 +38,7 @@ if SETTINGS_FILE.exists():
     SECRET_KEY = settings_data.get('SECRET_KEY', SECRET_KEY)
     DEBUG = settings_data.get('DEBUG', DEBUG)
     ALLOWED_HOSTS = settings_data.get('ALLOWED_HOSTS', ALLOWED_HOSTS)
-    DATABASES = settings_data.get('DATABASES', DATABASES)
+    # Не загружаем DATABASES — используем SQLite на хостинге
     TELEGRAM_BOT_TOKEN = settings_data.get('TELEGRAM_BOT_TOKEN', '')
     TELEGRAM_CHAT_ID = settings_data.get('TELEGRAM_CHAT_ID', '')
 

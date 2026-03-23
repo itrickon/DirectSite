@@ -1,2 +1,30 @@
-Django>=6.0
+# ============================================================
+# UNIVERSAL DJANGO PROJECT - REQUIREMENTS
+# ============================================================
+# Для всех хостингов: PythonAnywhere, Timeweb, Beget, VPS, Docker
+# ============================================================
+
+# Core Django
+Django>=4.2,<5.0
+
+# HTTP requests (для Telegram API)
 requests>=2.31.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Database
+# PostgreSQL (раскомментируйте, если используете PostgreSQL)
+# psycopg2-binary>=2.9.0
+
+# Database URL parsing (для PostgreSQL)
+dj-database-url>=2.1.0
+
+# Production server (для VPS/Docker)
+gunicorn>=21.2.0
+
+# Development tools (опционально)
+# django-debug-toolbar>=4.2.0
+
+# Email (опционально, для расширенной функциональности)
+# django-anymail>=10.2

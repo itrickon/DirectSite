@@ -1,0 +1,2 @@
+# Procfile for cloud platforms (Render, Railway, Heroku)
+web: gunicorn --bind 0.0.0.0:$PORT directsite.wsgi:application

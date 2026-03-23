@@ -51,6 +51,18 @@ if SETTINGS_FILE.exists():
     TELEGRAM_BOT_TOKEN = settings_data.get('TELEGRAM_BOT_TOKEN', '')
     TELEGRAM_CHAT_ID = settings_data.get('TELEGRAM_CHAT_ID', '')
 
+# Загрузка из переменных окружения (для Render)
+if os.environ.get('SECRET_KEY'):
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+if os.environ.get('DEBUG'):
+    DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
+if os.environ.get('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+if os.environ.get('TELEGRAM_BOT_TOKEN'):
+    TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
+if os.environ.get('TELEGRAM_CHAT_ID'):
+    TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/

@@ -7,7 +7,10 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.conf import settings
 from .models import Lead, VacancyApplication
 from .forms import LeadForm, VacancyApplicationForm
-from directsite.telegram_config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+
+# Импорт из переменных окружения (для Render)
+TELEGRAM_BOT_TOKEN = settings.TELEGRAM_BOT_TOKEN
+TELEGRAM_CHAT_ID = settings.TELEGRAM_CHAT_ID
 
 logger = logging.getLogger('core')
 

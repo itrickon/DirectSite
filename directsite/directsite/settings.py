@@ -40,10 +40,21 @@ HOSTING_TYPE = detect_hosting()
 
 # Security settings from environment
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
-DEBUG = get_bool_env('DEBUG', False)
+DEBUG = True
 
-# Allowed hosts from environment or defaults
-ALLOWED_HOSTS = get_allowed_hosts(HOSTING_TYPE)
+# Allowed hosts - критично для работы!
+# Сначала пробуем загрузить из .env, затем используем дефолтные значения
+ALLOWED_HOSTS = get_list_env('ALLOWED_HOSTS')
+if not ALLOWED_HOSTS:
+    # Дефолтные значения для разных хостингов
+    ALLOWED_HOSTS = [
+        'localhost',
+        '127.0.0.1',
+        'tricko66.pythonanywhere.com',
+        'www.tricko66.pythonanywhere.com',
+        'direct-line-sar.ru',
+        'www.direct-line-sar.ru',
+    ]
 
 # ============================================================
 # DATABASE CONFIGURATION
@@ -256,14 +267,14 @@ elif HOSTING_TYPE in ('vps', 'docker'):
     pass
 
 # ============================================================
-# DEBUG TOOLBAR (DEVELOPMENT ONLY)
+# DEBUG TOOLBAR (DEVELOPMENT ONLY) - ОТКЛЮЧЕНО
 # ============================================================
 
-if DEBUG:
-    # Enable debug toolbar in development
-    INSTALLED_APPS.append('debug_toolbar')
-    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-    INTERNAL_IPS = ['127.0.0.1', 'localhost']
+# if DEBUG:
+#     # Enable debug toolbar in development
+#     INSTALLED_APPS.append('debug_toolbar')
+#     MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+#     INTERNAL_IPS = ['127.0.0.1', 'localhost']
 
 # ============================================================
 # PRINT CONFIGURATION INFO (DEBUG MODE)

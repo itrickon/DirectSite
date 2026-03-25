@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .error-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 30px;
+        }
+        h1 { color: #f0ad4e; }
+        .info { background: #f0f0f0; padding: 15px; border-radius: 3px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <h1>404 Not Found</h1>
+        <p>Запрошенная страница не найдена.</p>
+        
+        <div class="info">
+            <p>Если вы видите эту страницу вместо сайта Django, возможно:</p>
+            <ul>
+                <li>Django ещё не запустился правильно</li>
+                <li>Проблемы с конфигурацией Passenger</li>
+                <li>Неправильные пути в настройках</li>
+            </ul>
+        </div>
+        
+        <h3>Проверьте:</h3>
+        <ol>
+            <li>Файл <code>passenger_wsgi.py</code> существует и содержит правильные пути</li>
+            <li>Виртуальное окружение установлено и активировано</li>
+            <li>Все зависимости установлены: <code>pip install -r requirements.txt</code></li>
+            <li>Перезапустите приложение через <code>restart.txt</code></li>
+        </ol>
+    </div>
+</body>
+</html>

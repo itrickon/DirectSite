@@ -14,6 +14,16 @@ Supported hosting:
 
 from pathlib import Path
 import os
+import sys
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR должен указывать на public_html (где находятся templates, static и т.д.)
+BASE_DIR = Path(__file__).resolve().parent.parent  # = public_html
+
+# Добавляем public_html в sys.path для config.py
+PUBLIC_HTML_DIR = BASE_DIR
+if str(PUBLIC_HTML_DIR) not in sys.path:
+    sys.path.insert(0, str(PUBLIC_HTML_DIR))
 
 # Import universal configuration
 from config import (
@@ -26,9 +36,6 @@ from config import (
     get_project_path,
 )
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 # ============================================================
 # AUTO-DETECT HOSTING TYPE
 # ============================================================
@@ -40,7 +47,7 @@ HOSTING_TYPE = detect_hosting()
 
 # Security settings from environment
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
-DEBUG = True
+DEBUG = get_bool_env('DEBUG', True)
 
 # Allowed hosts - критично для работы!
 # Сначала пробуем загрузить из .env, затем используем дефолтные значения
@@ -54,6 +61,8 @@ if not ALLOWED_HOSTS:
         'www.tricko66.pythonanywhere.com',
         'direct-line-sar.ru',
         'www.direct-line-sar.ru',
+        'itrickon.beget.tech',
+        'www.itrickon.beget.tech',
     ]
 
 # ============================================================
@@ -166,6 +175,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://tricko66.pythonanywhere.com',
     'https://direct-line-sar.ru',
     'https://www.direct-line-sar.ru',
+    'https://itrickon.beget.tech',
+    'https://www.itrickon.beget.tech',
 ]
 
 # Add from environment
@@ -260,6 +271,14 @@ if HOSTING_TYPE == 'pythonanywhere':
 elif HOSTING_TYPE == 'timeweb':
     # Timeweb uses Passenger
     pass
+
+# Beget specific
+elif HOSTING_TYPE == 'beget':
+    # Beget uses Passenger WSGI
+    # Disable SSL redirect for initial setup
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
 
 # VPS/Docker specific
 elif HOSTING_TYPE in ('vps', 'docker'):

@@ -42,6 +42,11 @@ def detect_hosting():
     if 'pythonanywhere' in sys.executable.lower():
         return 'pythonanywhere'
 
+    # Beget - проверка по пути
+    home = os.environ.get('HOME', '')
+    if '/home/i/' in home or '/beget.tech/' in home:
+        return 'beget'
+
     # Docker
     if os.path.exists('/.dockerenv'):
         return 'docker'

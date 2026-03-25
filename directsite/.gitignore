@@ -23,20 +23,17 @@ wheels/
 # Django
 *.log
 local_settings.py
-db.sqlite3
 db.sqlite3-journal
 /media
-/staticfiles
-/static
 
-# Виртуальное окружение
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# Виртуальное окружение (не игнорируем для Beget)
+# .env - оставляем для локальной разработки, на сервере свой
+# .venv
+# env/
+# venv/
+# ENV/
+# env.bak/
+# venv.bak/
 
 # IDE
 .vscode/
@@ -49,6 +46,6 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Чувствительные данные
-settings.json
-.env
+# Чувствительные данные (не коммитим в репозиторий)
+# settings.json
+# .env - для Beget нужен, но не коммитьте в публичный репозиторий!

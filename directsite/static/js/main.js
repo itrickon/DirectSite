@@ -454,7 +454,7 @@ function initStatsAnimation() {
 }
  
 // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
- 
+
 document.addEventListener('DOMContentLoaded', function() {
     initPreloader();
     initNavbar();
@@ -466,6 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTabs();
     initStatsAnimation();
     initPhoneFormatter();
+    initMultiStepForm();
 
     // Инициализация калькулятора если он есть на странице
     if (document.getElementById('profitCalculator')) {
@@ -502,7 +503,7 @@ function initPhoneFormatter() {
     phoneInputs.forEach(input => {
         // Устанавливаем placeholder
         input.placeholder = '+7 (___) ___-__-__';
-        
+
         input.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, ''); // Удаляем всё кроме цифр
 
@@ -522,7 +523,7 @@ function initPhoneFormatter() {
 
             e.target.value = formatted;
         });
-        
+
         // При фокусе - выделяем всё после +7 для удобства редактирования
         input.addEventListener('focus', (e) => {
             const value = e.target.value.replace(/\D/g, '');
@@ -533,4 +534,90 @@ function initPhoneFormatter() {
             }
         });
     });
+}
+
+// MULTI-STEP ФОРМА - переключение шагов
+
+let currentStep = 1;
+
+function initMultiStepForm() {
+    // Инициализация первого шага при загрузке
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    
+    if (step1) {
+        step1.classList.remove('hidden');
+    }
+    if (step2) {
+        step2.classList.add('hidden');
+    }
+    if (step3) {
+        step3.classList.add('hidden');
+    }
+    
+    // Сброс прогресс-бара на первый шаг
+    updateProgressBar(1);
+    updateStepIndicators(1);
+}
+
+window.nextStep = function(step) {
+    // Скрываем все шаги
+    document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+    
+    // Показываем нужный шаг
+    const targetStep = document.getElementById('step' + step);
+    if (targetStep) {
+        targetStep.classList.remove('hidden');
+    }
+    
+    // Обновляем индикаторы
+    updateStepIndicators(step);
+    
+    // Обновляем прогресс-бар
+    updateProgressBar(step);
+    
+    currentStep = step;
+}
+
+window.prevStep = function(step) {
+    // Скрываем все шаги
+    document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+    
+    // Показываем нужный шаг
+    const targetStep = document.getElementById('step' + step);
+    if (targetStep) {
+        targetStep.classList.remove('hidden');
+    }
+    
+    // Обновляем индикаторы
+    updateStepIndicators(step);
+    
+    // Обновляем прогресс-бар
+    updateProgressBar(step);
+    
+    currentStep = step;
+}
+
+function updateStepIndicators(step) {
+    for (let i = 1; i <= 3; i++) {
+        const indicator = document.getElementById('step' + i + 'Indicator');
+        if (indicator) {
+            if (i <= step) {
+                indicator.classList.add('active', 'text-gold-500');
+                indicator.classList.remove('text-gray-500');
+            } else {
+                indicator.classList.remove('active', 'text-gold-500');
+                indicator.classList.add('text-gray-500');
+            }
+        }
+    }
+}
+
+function updateProgressBar(step) {
+    const progressFill = document.getElementById('progressFill');
+    if (progressFill) {
+        const percentage = (step / 3) * 100;
+        progressFill.style.width = percentage + '%';
+    }
 }

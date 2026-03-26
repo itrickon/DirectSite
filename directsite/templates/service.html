@@ -44,7 +44,7 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="{% url 'index' %}" class="flex items-center gap-3">
-                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <img src="{% static 'images/DirectLine_6-Picsart-BackgroundChanger.png' %}" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
                             <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
@@ -54,7 +54,7 @@
 
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="{% url 'index' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
-                    <a href="{% url 'index' %}#services" class="nav-link text-gold-500 text-sm font-bold">Услуги</a>
+                    <a href="{% url 'service' %}" class="nav-link text-gold-500 text-sm font-bold">Услуги</a>
                     <a href="{% url 'index' %}#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
                     <a href="{% url 'index' %}#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
                     <a href="{% url 'vacancy' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
@@ -79,7 +79,7 @@
             </div>
             <nav class="space-y-4">
                 <a href="{% url 'index' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Главная</a>
-                <a href="{% url 'index' %}#services" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2 border-b border-white/5">Услуги</a>
+                <a href="{% url 'service' %}" onclick="toggleMobileMenu()" class="block text-gold-500 font-bold py-2 border-b border-white/5">Услуги</a>
                 <a href="{% url 'index' %}#cases" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Кейсы</a>
                 <a href="{% url 'index' %}#reviews" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Отзывы</a>
                 <a href="{% url 'vacancy' %}" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold-500 py-2 border-b border-white/5">Вакансии</a>
@@ -105,9 +105,9 @@
 
             <div class="fade-in">
                 <p class="text-gold-500 font-medium tracking-[0.3em] mb-6 uppercase text-sm md:text-base">
-                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4"></span>
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4 decorative-line"></span>
                     Наши услуги
-                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4"></span>
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4 decorative-line"></span>
                 </p>
                 
                 <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
@@ -782,7 +782,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <img src="{% static 'images/DirectLine_6-Picsart-BackgroundChanger.png' %}" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
                             <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>

@@ -874,20 +874,25 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .toc {
         padding: 16px;
     }
-    
+
     .legal-content {
         padding: 24px;
     }
-    
+
     .legal-section h2 {
         font-size: 20px;
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .section-number {
         width: 32px;
         height: 32px;
         font-size: 13px;
+    }
+
+    /* Скрытие декоративных линий в заголовках */
+    .decorative-line {
+        display: none !important;
     }
 }

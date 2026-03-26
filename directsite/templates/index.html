@@ -44,7 +44,7 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#" class="flex items-center gap-3">
-                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <img src="{% static 'images/DirectLine_6-Picsart-BackgroundChanger.png' %}" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
                             <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>
@@ -54,7 +54,7 @@
 
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="#hero" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Главная</a>
-                    <a href="#services" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
+                    <a href="{% url 'service' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Услуги</a>
                     <a href="#cases" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Кейсы</a>
                     <a href="#reviews" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Отзывы</a>
                     <a href="{% url 'vacancy' %}" class="nav-link text-gray-300 hover:text-gold-500 text-sm font-medium">Вакансии</a>
@@ -114,9 +114,9 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
             <div class="fade-in">
                 <p class="text-gold-500 font-medium tracking-[0.3em] mb-6 uppercase text-sm md:text-base">
-                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4"></span>
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle mr-4 decorative-line"></span>
                     Искусство маркетинга
-                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4"></span>
+                    <span class="inline-block w-12 h-px bg-gold-500 align-middle ml-4 decorative-line"></span>
                 </p>
             </div>
 
@@ -418,7 +418,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div class="testimonial-card p-8 rounded-sm fade-in">
+                <div class="testimonial-card p-8 rounded-sm fade-in h-full flex flex-col">
                     <div class="flex items-center gap-1 mb-4">
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
@@ -426,10 +426,10 @@
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
                     </div>
-                    <p class="text-gray-400 italic mb-6">
+                    <p class="text-gray-400 italic mb-6 flex-grow">
                         «DirectLine = продажи! DirectLine даёт поток заинтересованных клиентов, с которыми мы теперь напрямую связываемся.»
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-auto">
                         <img src="{% static 'images/customers_reviews/Oleg_Bardak.jpg' %}" alt="Олег Бардак" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
                         <div>
                             <p class="text-white font-medium">Олег Бардак</p>
@@ -439,7 +439,7 @@
                 </div>
 
                 <!-- Review 2 -->
-                <div class="testimonial-card p-8 rounded-sm fade-in">
+                <div class="testimonial-card p-8 rounded-sm fade-in h-full flex flex-col">
                     <div class="flex items-center gap-1 mb-4">
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
@@ -447,10 +447,10 @@
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
                     </div>
-                    <p class="text-gray-400 italic mb-6">
+                    <p class="text-gray-400 italic mb-6 flex-grow">
                         «С августа 2023 с DirectLine - только положительные эмоции! Постоянный поток клиентов, сделки закрываются на 20 дней быстрее, а настройка скриптов позволяет отсеивать неподходящих.»
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-auto">
                         <img src="{% static 'images/customers_reviews/Ivan_Slavutsky.jpg' %}" alt="Иван Славуцкий" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
                         <div>
                             <p class="text-white font-medium">Иван Славуцкий</p>
@@ -460,7 +460,7 @@
                 </div>
 
                 <!-- Review 3 -->
-                <div class="testimonial-card p-8 rounded-sm fade-in">
+                <div class="testimonial-card p-8 rounded-sm fade-in h-full flex flex-col">
                     <div class="flex items-center gap-1 mb-4">
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
@@ -468,10 +468,10 @@
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
                     </div>
-                    <p class="text-gray-400 italic mb-6">
+                    <p class="text-gray-400 italic mb-6 flex-grow">
                         «Раньше Яндекс.Директ, соцсети и рассылки не давали прежних результатов. DirectLine стал спасением: теперь у нас достаточно заявок, даже в несезон!»
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-auto">
                         <img src="{% static 'images/customers_reviews/Ilya Sdobnov.jpg' %}" alt="Илья Сдобнов" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
                         <div>
                             <p class="text-white font-medium">Илья Сдобнов</p>
@@ -481,7 +481,7 @@
                 </div>
 
                 <!-- Review 4 -->
-                <div class="testimonial-card p-8 rounded-sm fade-in">
+                <div class="testimonial-card p-8 rounded-sm fade-in h-full flex flex-col">
                     <div class="flex items-center gap-1 mb-4">
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
@@ -489,10 +489,10 @@
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
                     </div>
-                    <p class="text-gray-400 italic mb-6">
+                    <p class="text-gray-400 italic mb-6 flex-grow">
                         «С момента когда я начала сотрудничать с DirectLine прошло уже немало времени. Главная проблема моего сегмента являлось не стабильный поток заявок. Я сводил это на уникальность моего сегмента. Но с вами я понял, что можно получать заявки стабильно и ежедневно.»
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-auto">
                         <img src="{% static 'images/customers_reviews/Oksana.jpg' %}" alt="Оксана" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
                         <div>
                             <p class="text-white font-medium">Оксана</p>
@@ -502,7 +502,7 @@
                 </div>
 
                 <!-- Review 5 -->
-                <div class="testimonial-card p-8 rounded-sm fade-in">
+                <div class="testimonial-card p-8 rounded-sm fade-in h-full flex flex-col">
                     <div class="flex items-center gap-1 mb-4">
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
@@ -510,10 +510,10 @@
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
                     </div>
-                    <p class="text-gray-400 italic mb-6">
+                    <p class="text-gray-400 italic mb-6 flex-grow">
                         «Профессионализм, открытость, оперативность решения любых вопросов, эффективность - это то, что делает наше сотрудничество взаимовыгодным и максимально приятным в работе. Спасибо команде (операторы просто Топ) за результат, которого мы вместе добились»
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-auto">
                         <img src="{% static 'images/customers_reviews/septik-termit-profi-konstantin.jpg' %}" alt="Константин" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
                         <div>
                             <p class="text-white font-medium">Константин</p>
@@ -523,7 +523,7 @@
                 </div>
 
                 <!-- Review 6 -->
-                <div class="testimonial-card p-8 rounded-sm fade-in">
+                <div class="testimonial-card p-8 rounded-sm fade-in h-full flex flex-col">
                     <div class="flex items-center gap-1 mb-4">
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
@@ -531,10 +531,10 @@
                         <i class="fas fa-star text-gold-500"></i>
                         <i class="fas fa-star text-gold-500"></i>
                     </div>
-                    <p class="text-gray-400 italic mb-6">
+                    <p class="text-gray-400 italic mb-6 flex-grow">
                         «Профессионализм, открытость, оперативность решения любых вопросов, эффективность - это то, что делает наше сотрудничество взаимовыгодным и максимально приятным в работе. <br />Спасибо команде (операторы просто Топ) за результат, которого мы вместе добились»
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 mt-auto">
                         <img src="{% static 'images/customers_reviews/Pavel.png' %}" alt="Павел" class="w-12 h-12 rounded-full object-cover border-2 border-gold-500">
                         <div>
                             <p class="text-white font-medium">Павел</p>
@@ -864,7 +864,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <img src="https://thb.tildacdn.com/tild3334-3364-4232-b732-323962346465/-/resize/40x/DirectLine_6.png" alt="DirectLine Logo" class="h-10">
+                        <img src="{% static 'images/DirectLine_6-Picsart-BackgroundChanger.png' %}" alt="DirectLine Logo" class="h-10">
                         <div>
                             <span class="font-serif text-xl font-bold text-white tracking-wider">DirectLine</span>
                             <p class="text-gold-500 text-xs tracking-widest -mt-1">МАРКЕТИНГОВОЕ IT-АГЕНТСТВО</p>

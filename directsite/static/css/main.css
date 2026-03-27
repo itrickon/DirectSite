@@ -896,3 +896,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
         display: none !important;
     }
 }
+
+/* Логотип с закругленными краями */
+img[src*="DirectLine_6-Picsart-BackgroundChanger"] {
+    border-radius: 12px;
+}
+
+/* Команда - позиционирование фото от верха */
+.team-card .image-wrapper img {
+    object-position: top;
+}

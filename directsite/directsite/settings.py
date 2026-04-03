@@ -147,6 +147,13 @@ STATIC_ROOT = get_static_root(BASE_DIR, HOSTING_TYPE)
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # ============================================================
+# MEDIA FILES
+# ============================================================
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# ============================================================
 # DEFAULT PRIMARY KEY FIELD TYPE
 # ============================================================
 
